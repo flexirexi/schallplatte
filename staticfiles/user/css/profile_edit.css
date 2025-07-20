@@ -1,0 +1,219 @@
+/* 
+INFO: 
+Bootstrap is used here -> in order to overwrite, use: 
+    <selector>[theme]           for elements in all themes, 
+    <selector>[theme="dark"]    for elements only in dark mode,
+    <selector>[theme=light"]    for elements only in light mode
+*/
+
+@import url("/static/css/themes.css");
+@import url("/static/css/layout.css");
+
+/* 01 Generic STYLES that apply for all html pages ------------------------------ */
+
+
+html[data-theme] main {
+    background-color: var(--bg);
+    padding: 0;
+    justify-content: center;
+    margin-top: var(--nav-height);
+}
+
+html[data-theme] input {
+    width: 100%;
+    height: 100%;
+    background: var(--bg2);
+    border: 1px solid currentColor;
+    border-radius: 5px;
+}
+
+html[data-theme] textarea {
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg2);
+    border: 1px solid currentColor;
+    border-radius: 5px;
+}
+
+/* 02 General classes for all pages --------------------------------------------- */
+
+.profile_section {
+    padding: 10px 30px;
+    background-color: var(--bg);
+}
+
+.profile_section img {
+    height: 190px;
+    border-radius: 15px;   
+}
+
+.booking_section {
+    background-color: var(--bg2);
+    padding: 30px 0;
+    
+}
+
+html[data-theme] .booking-item {
+    width: 95%;
+    max-width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+}
+
+html[data-theme] .mobile_card_switcher {
+    display: block;
+    justify-items: center;
+    position:relative;
+    align-items: unset;
+}
+
+html[data-theme] .date_card {
+    height: 95px;
+    width: 95px;
+    background-color: var(--accent);
+    padding-top: 10px;
+    transform: translate(0, -40%);
+    position: absolute;
+    left: calc(50% - 47.5px);
+}
+
+html[theme="dark"] .date_card h1,
+html[theme="dark"] .date_card p {
+    color: black;
+    text-shadow: none;
+}
+
+html[data-theme] .card_content {
+    margin-top: 70px;
+}
+
+#profile-form .row {
+    padding: 5px;
+}
+
+.bg {
+    background-color: #00000020;
+}
+
+.custom-flex {
+    display: unset;
+}
+
+/* 03 specific elements -------------------------------------------------------- */
+.profile-head {
+    display: flex;
+    align-items: center;
+    padding-left: 3px;
+}
+
+html[theme="dark"] .profile-head i {
+    color: black;
+}
+
+html[data-theme] .profile-head a:hover i {
+    color: var(--act-bg);
+}
+
+.profile-head div {
+    margin-right: auto;
+}
+
+html[data-theme] .profile-head h4 {
+    color: var(--schallplatte);
+}
+
+#btn-cancel {
+    background-color: black;
+    color: var(--act-bg);
+}
+
+#btn-cancel:hover {
+    background-color: var(--act-bg);
+    color: black;
+}
+
+#btn-save {
+    background-color: var(--accent); 
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#btn-save:hover {
+    background-color: var(--schallplatte);
+}
+
+#btn-save:hover i {
+    color: black;
+}
+
+html[data-theme] #profile-photo   {
+    margin: auto;
+    justify-items: center;
+    padding: 50px;
+}
+
+html[data-theme] #profile-photo i {
+    color: var(--link);
+    background-color: #00000020;
+    padding: 50px 40px;
+    border-radius: 90px;
+}
+
+html[data-theme] #profile-photo i:hover {
+    color: #ffffffa0;
+}
+
+#about-user {
+    min-height: 100px;
+}
+
+html[data-theme] #booking_section_btn {
+    align-self: center;
+}
+
+
+/* MEDIA QUERIES --------------------------------------------------------------- */
+@media (min-width: 768px) {
+    html[data-theme] .booking-item {
+        max-width: 900px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 30px;
+    }
+    
+    html[data-theme] .mobile_card_switcher {
+        display: flex;
+        justify-items: unset;
+        position:unset;
+        align-items: center;
+        
+    }
+    
+    html[data-theme] .date_card {
+        height: 95px;
+        width: 95px;
+        background-color: var(--accent);
+        padding-top: 7px;
+        transform: translate(-40%,0);
+        position: unset;
+        left: unset;
+    }
+
+    html[theme="light"] .date_card h1 {
+        color: white;
+    }
+
+    html[theme="light"] .date_card * {
+        color: white;
+    }
+
+    html[data-theme] .card_content {
+        margin-top: unset;
+    }
+
+    .custom-flex {
+        display: flex;
+    }
+}

@@ -12,7 +12,7 @@ Bootstrap is used here -> in order to overwrite, use:
 /* 01 Generic STYLES that apply for all html pages ------------------------------ */
 
 
-html[theme] main {
+html[data-theme] main {
     background-color: var(--bg);
     padding: 0;
     justify-items: center;
@@ -20,7 +20,7 @@ html[theme] main {
 }
 
 /* 02 General classes for all pages --------------------------------------------- */
-html[theme] .hero {
+html[data-theme] .hero {
     margin-top: var(--nav-height);
     background-color: transparent;
     display: block;
@@ -28,7 +28,7 @@ html[theme] .hero {
     opacity: 0.8;
 }
 
-html[theme] .hero-image {
+html[data-theme] .hero-image {
     height: 150px;
     overflow: hidden;
     margin: 0 auto;
@@ -36,13 +36,13 @@ html[theme] .hero-image {
     justify-content: center;
 }
 
-html[theme] .hero img {
+html[data-theme] .hero img {
     height: 200px;
     max-width: 50vw;
     object-fit: cover;
 }
 
-html[theme] .hero-text {
+html[data-theme] .hero-text {
     text-align: center;
     width: 100%;
     font-weight: bold;
@@ -51,12 +51,12 @@ html[theme] .hero-text {
     font-size: 2.5rem;
 }
 
-html[theme] .hero-text h1 {
+html[data-theme] .hero-text h1 {
     color: var(--schallplatte);
     background-color: var(--bg);
 }
 
-html[theme] .card {
+html[data-theme] .card {
     width: 85%;
     max-width: 350px;
     justify-content: center;
@@ -113,16 +113,16 @@ form ul li {
     display: none;
 }
 
-html[theme] #navbar-logo {
+html[data-theme] #navbar-logo {
     display: none;
 }
 
-html[theme] #login-nav {
+html[data-theme] #login-nav {
     background-color: transparent;
     border-radius: 5px;
 }
 
-html[theme] #login-nav .active {
+html[data-theme] #login-nav .active {
     font-weight: bold;
 }
 

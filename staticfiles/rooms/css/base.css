@@ -1,0 +1,176 @@
+/* 
+INFO: 
+Bootstrap is used here -> in order to overwrite, use: 
+    <selector>[theme]           for elements in all themes, 
+    <selector>[theme="dark"]    for elements only in dark mode,
+    <selector>[theme=light"]    for elements only in light mode
+*/
+
+@import url("/static/css/themes.css");
+@import url("/static/css/layout.css");
+
+
+/* 01 Generic STYLES that apply for all html pages ------------------------------ */
+html[data-theme] * {
+    color: var(--text);
+    box-sizing: border-box;
+}
+
+html[data-theme] h1,
+html[data-theme] h2,
+html[data-theme] h3,
+html[data-theme] h4,
+html[data-theme] h5,
+html[data-theme] h6 {
+    color: var(--title);
+    text-shadow: 1px 2px 3px var(--title-shadow);
+}
+
+html[data-theme] body {
+    background-color: var(--bg2);
+}
+
+html[data-theme] nav {
+    background-color: var(--nav-bg);
+    color: var(--link-text-hover);
+    padding: 0 15px;
+    min-height: var(--nav-height);
+}
+
+html[data-theme] a {
+    color: var(--link);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+}
+
+html[data-theme] a:hover {
+    color: currentColor;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 1px;
+}
+
+html[data-theme] nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+html[data-theme] nav a:hover {
+    color: var(--link-text-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--link-text-hover);
+    text-decoration-thickness: 1px;
+}
+
+
+/* 02 General classes for all pages --------------------------------------------- */
+html[data-theme] .btn {
+    background-color: var(--act-bg);
+    color: var(--act-text);
+    border: 1px solid var(--act-border);
+    padding: 6px 16px;
+    margin: 2px;
+    font-weight: 600;
+    width: fit-content;
+}
+
+html[data-theme] .btn:hover {
+    background-color: var(--act-bg-hover);
+    color: var(--act-text-hover);
+    border: 1px solid var(--act-text-hover);
+    text-decoration: none;
+    
+}
+
+.navbar-nav .nav-link {
+    font-size: 25px;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+html[data-theme] .navbar-toggler,
+html[data-theme] .navbar-toggler:focus {
+    border: none;   
+    outline: none;
+    box-shadow: none; 
+    transition: background-color 0.4s ease-out;
+}
+
+html[data-theme] .navbar-toggler:active {
+    background-color: #ffffff50;
+}
+
+html[data-theme] .dropdown-menu {
+    background-color: #000000d0;
+}
+
+
+html[data-theme] .message-container {
+    position: fixed;
+    top: var(--nav-height);
+    right: 10px;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+html[data-theme] .message-container:hover {
+    opacity: 1;
+}
+
+html[data-theme] .message-container .alert {
+    color: black !important;
+  }
+
+
+
+/* 03 specific elements -------------------------------------------------------- */
+#theme-toggle {
+    background-color: #ffffff20;
+    border: var(--act-text);
+    margin: 10px 15px;
+}
+
+#language-toggle {
+    display:none;
+    background-color: var(--act-text);
+    border: var(--act-text);
+}
+
+#theme-toggle:hover,
+#language-toggle:hover {
+    background-color: #ffffff50;
+}
+
+html[data-theme] #logged-in-dropdown a:hover {
+    background-color: #000000a0;
+}
+
+/* MEDIA QUERIES --------------------------------------------------------------- */
+@media (min-width: 768px) {
+    .btn {
+        padding: 10px 18px;
+    }
+
+    #btnLoginMobile {
+        display: none;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 20px; 
+    }
+
+    #theme-toggle {
+        border: var(--act-text);
+        margin-left: 10px;
+        margin-right: 0;
+    }
+}
+
+
+

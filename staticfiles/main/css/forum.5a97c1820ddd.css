@@ -1,0 +1,81 @@
+/* 
+INFO: 
+Bootstrap is used here -> in order to overwrite, use: 
+    <selector>[theme]           for elements in all themes, 
+    <selector>[theme="dark"]    for elements only in dark mode,
+    <selector>[theme=light"]    for elements only in light mode
+*/
+
+@import url("/static/css/themes.3f749ffd8c87.css");
+@import url("/static/css/layout.4803760c05bb.css");
+
+/* 01 Generic STYLES that apply for all html pages ------------------------------ */
+
+
+html[data-theme] main {
+    background-color: var(--bg);
+    padding: 0;
+    justify-content: center;
+    margin-top: 0;
+}
+
+/* 02 General classes for all pages --------------------------------------------- */
+html[data-theme] .hero {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: var(--nav-height);
+    background-color: var(--bg);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+html[data-theme] .hero img {
+    height: 400px;
+    min-width: 100vw;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+html[data-theme] .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    line-height: 1.6;   
+    text-shadow: 2px 3px 6px #000000c8;
+    font-size: 2.5rem;
+    background-color: #000000c0;
+    padding: 80px 0;
+}
+
+html[data-theme] .hero-text h1 {
+    color: var(--act-bg);
+}
+
+.forum_section {
+    padding: 40px;
+}
+
+.forum_section img {
+    height: 190px;
+    border-radius: 15px;
+    
+}
+
+
+
+/* 03 specific elements -------------------------------------------------------- */
+
+
+/* MEDIA QUERIES --------------------------------------------------------------- */
+@media (min-width: 768px) {
+    html[data-theme] .hero img {
+    }
+
+}

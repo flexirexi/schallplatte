@@ -1,0 +1,58 @@
+/* 
+INFO: 
+Bootstrap is used here -> in order to overwrite, use: 
+    <selector>[theme]           for elements in all themes, 
+    <selector>[theme="dark"]    for elements only in dark mode,
+    <selector>[theme=light"]    for elements only in light mode
+*/
+
+@import url("/static/css/themes.3f749ffd8c87.css");
+@import url("/static/css/layout.4803760c05bb.css");
+
+/* 01 Generic STYLES  -------------------------------------------------------- */
+html[data-theme] main {
+    background-color: var(--bg);
+    padding: 0 25px;
+    justify-content: center;
+
+}
+
+
+/* 02 General classes --------------------------------------------------------- */
+html[data-theme] .container {
+    max-width: 1200px;
+}
+
+html[data-theme] .rooms_section {
+    text-align: left;
+    padding: 30px 0;
+}
+
+html[data-theme] .carousel-item {
+    height: 350px;  
+}
+
+.carousel-item img {
+    height: 100%;
+    object-fit: cover;
+}
+
+html[data-theme] .carousel-item h5 {
+    padding: 5px 2px;
+    background-color: #00000090;
+    border-radius: 5px;
+    color: white;
+}
+
+
+/* 03 specific elements -------------------------------------------------------- */
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  filter: invert(1); /* Weiß  Schwarz */
+}
+
+/* MEDIA QUERIES --------------------------------------------------------------- */
+@media (min-width: 768px) {
+    
+
+}

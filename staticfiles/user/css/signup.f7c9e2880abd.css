@@ -1,0 +1,143 @@
+/* 
+INFO: 
+Bootstrap is used here -> in order to overwrite, use: 
+    <selector>[theme]           for elements in all themes, 
+    <selector>[theme="dark"]    for elements only in dark mode,
+    <selector>[theme=light"]    for elements only in light mode
+*/
+
+@import url("/static/css/themes.3f749ffd8c87.css");
+@import url("/static/css/layout.4803760c05bb.css");
+
+/* 01 Generic STYLES that apply for all html pages ------------------------------ */
+
+
+html[data-theme] main {
+    background-color: var(--bg);
+    padding: 0;
+    justify-items: center;
+    margin-top: 0;
+}
+
+/* 02 General classes for all pages --------------------------------------------- */
+html[data-theme] .hero {
+    margin-top: var(--nav-height);
+    background-color: transparent;
+    display: block;
+    justify-items: center;
+    opacity: 0.8;
+}
+
+html[data-theme] .hero-image {
+    height: 150px;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+html[data-theme] .hero img {
+    height: 200px;
+    max-width: 50vw;
+    object-fit: cover;
+}
+
+html[data-theme] .hero-text {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    line-height: 1.6;   
+    text-shadow: 2px 3px 6px #000000c8;
+    font-size: 2.5rem;
+}
+
+html[data-theme] .hero-text h1 {
+    color: var(--schallplatte);
+    background-color: var(--bg);
+}
+
+html[data-theme] .card {
+    width: 85%;
+    max-width: 350px;
+    justify-content: center;
+    text-align: center;
+    padding: 0 0 20px 0;
+    margin: 20px auto;
+}
+
+.row {
+    justify-content: center;
+}
+
+.row-child {
+    justify-items: center;
+}
+
+form {
+    justify-items: center;
+    width: fit-content;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    max-width: 250px;
+    min-width: 180px;
+    background-color: var(--bg);
+    border-radius: 5px;
+    border: 3px solid #00000050;
+    font-size: 1.2rem;
+    margin-top: 2px;
+}
+
+form ul {
+    font-size: 0.8rem;
+    text-align: left;
+    list-style: none;
+    padding-left: 0;
+}
+
+form ul li {
+    position: relative;
+    padding-left: 1rem;
+    text-indent: -0.5rem;
+}
+
+
+
+
+/* 03 specific elements -------------------------------------------------------- */
+#navbar-links {
+    display: none;
+}
+
+html[data-theme] #navbar-logo {
+    display: none;
+}
+
+html[data-theme] #login-nav {
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+html[data-theme] #login-nav .active {
+    font-weight: bold;
+}
+
+#no-account {
+    font-size: 0.9rem;
+    margin: 20px auto;
+}
+
+#no-account a {
+    color: var(--link);
+    font-size: 0.9rem;
+}
+
+/* MEDIA QUERIES --------------------------------------------------------------- */
+@media (min-width: 768px) {
+
+
+}

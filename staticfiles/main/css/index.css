@@ -10,7 +10,7 @@ Bootstrap is used here -> in order to overwrite, use:
 @import url("/static/css/layout.css");
 
 /* 01 Generic STYLES that apply for all html pages ------------------------------ */
-html[theme] header {
+html[data-theme] header {
     margin-top: var(--nav-height);
     background-color: var(--bg);
     overflow: hidden;
@@ -23,7 +23,7 @@ html[theme] header {
     
 }
 
-html[theme] main {
+html[data-theme] main {
     background-color: var(--bg);
     padding: 0 15px;
     justify-content: center;
@@ -31,18 +31,18 @@ html[theme] main {
 }
 
 /* 02 General classes for all pages --------------------------------------------- */
-html[theme] .hero {
+html[data-theme] .hero {
     width: 100%;
 }
 
-html[theme] .hero img {
+html[data-theme] .hero img {
     height: 100%;
     min-width: 100vw;
     object-fit: cover;
     filter: brightness(30%);
 }
 
-html[theme] .hero-text {
+html[data-theme] .hero-text {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -65,26 +65,26 @@ html[theme] .hero-text {
 }
 
 
-html[theme] .index_section {
+html[data-theme] .index_section {
     text-align: center;
     padding: 40px 0;
 }
 
 
 /* 03 specific elements -------------------------------------------------------- */
-html[theme] .tHeader11 {
+html[data-theme] .tHeader11 {
     font-size: 0.8rem;
     display: block;
     margin-left: 4vw;
 }
 
-html[theme] .tHeader21 {
+html[data-theme] .tHeader21 {
     font-size: 3rem;
     display: block;
     margin-left: 5vw;
 }
 
-html[theme] .tHeader31 {
+html[data-theme] .tHeader31 {
     font-size: 0.8rem;
     margin-top: 20px;
     margin-left: 8vw;
@@ -96,23 +96,23 @@ html[theme] .tHeader31 {
 }
 /* MEDIA QUERIES --------------------------------------------------------------- */
 @media (min-width: 768px) {
-    html[theme] .hero img {
+    html[data-theme] .hero img {
         filter: brightness(40%);
     }
 
-    html[theme] .tHeader11 {
+    html[data-theme] .tHeader11 {
         font-size: 1rem;
         display: block;
         margin-left: 4vw;
     }
     
-    html[theme] .tHeader21 {
+    html[data-theme] .tHeader21 {
         font-size: 4rem;
         display: block;
         margin-left: 5vw;
     }
     
-    html[theme] .tHeader31 {
+    html[data-theme] .tHeader31 {
         font-size: 1rem;
         margin-top: 20px;
         margin-left: 8vw;

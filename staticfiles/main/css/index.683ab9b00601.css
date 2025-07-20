@@ -1,0 +1,125 @@
+/* 
+INFO: 
+Bootstrap is used here -> in order to overwrite, use: 
+    <selector>[theme]           for elements in all themes, 
+    <selector>[theme="dark"]    for elements only in dark mode,
+    <selector>[theme=light"]    for elements only in light mode
+*/
+
+@import url("/static/css/themes.3f749ffd8c87.css");
+@import url("/static/css/layout.4803760c05bb.css");
+
+/* 01 Generic STYLES that apply for all html pages ------------------------------ */
+html[data-theme] header {
+    margin-top: var(--nav-height);
+    background-color: var(--bg);
+    overflow: hidden;
+
+    min-height: calc(100vh - var(--nav-height));
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+html[data-theme] main {
+    background-color: var(--bg);
+    padding: 0 15px;
+    justify-content: center;
+    margin-top: 0;
+}
+
+/* 02 General classes for all pages --------------------------------------------- */
+html[data-theme] .hero {
+    width: 100%;
+}
+
+html[data-theme] .hero img {
+    height: 100%;
+    min-width: 100vw;
+    object-fit: cover;
+    filter: brightness(30%);
+}
+
+html[data-theme] .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    width: 90%;
+    font-weight: bold;
+    line-height: 1.6;   
+    text-shadow: 2px 3px 6px #000000c8;
+    font-size: 2.5rem;
+}
+
+
+
+.index_cards_horizontal {
+    height: 10px;
+    width: 100%;
+    border-radius: 15px;
+    
+}
+
+
+html[data-theme] .index_section {
+    text-align: center;
+    padding: 40px 0;
+}
+
+
+/* 03 specific elements -------------------------------------------------------- */
+html[data-theme] .tHeader11 {
+    font-size: 0.8rem;
+    display: block;
+    margin-left: 4vw;
+}
+
+html[data-theme] .tHeader21 {
+    font-size: 3rem;
+    display: block;
+    margin-left: 5vw;
+}
+
+html[data-theme] .tHeader31 {
+    font-size: 0.8rem;
+    margin-top: 20px;
+    margin-left: 8vw;
+}
+
+.tHeader32 {
+    display: inline;
+    font-size: 2.3rem;
+}
+/* MEDIA QUERIES --------------------------------------------------------------- */
+@media (min-width: 768px) {
+    html[data-theme] .hero img {
+        filter: brightness(40%);
+    }
+
+    html[data-theme] .tHeader11 {
+        font-size: 1rem;
+        display: block;
+        margin-left: 4vw;
+    }
+    
+    html[data-theme] .tHeader21 {
+        font-size: 4rem;
+        display: block;
+        margin-left: 5vw;
+    }
+    
+    html[data-theme] .tHeader31 {
+        font-size: 1rem;
+        margin-top: 20px;
+        margin-left: 8vw;
+    }
+    
+    .tHeader32 {
+        display: inline;
+        font-size: 4.5rem;
+    }
+}

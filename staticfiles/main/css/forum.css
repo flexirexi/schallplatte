@@ -12,7 +12,7 @@ Bootstrap is used here -> in order to overwrite, use:
 /* 01 Generic STYLES that apply for all html pages ------------------------------ */
 
 
-html[theme] main {
+html[data-theme] main {
     background-color: var(--bg);
     padding: 0;
     justify-content: center;
@@ -20,7 +20,7 @@ html[theme] main {
 }
 
 /* 02 General classes for all pages --------------------------------------------- */
-html[theme] .hero {
+html[data-theme] .hero {
     width: 100%;
     max-width: 1200px;
     margin-top: var(--nav-height);
@@ -32,14 +32,14 @@ html[theme] .hero {
     justify-content: center;
 }
 
-html[theme] .hero img {
+html[data-theme] .hero img {
     height: 400px;
     min-width: 100vw;
     object-fit: cover;
     filter: brightness(70%);
 }
 
-html[theme] .hero-text {
+html[data-theme] .hero-text {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -54,7 +54,7 @@ html[theme] .hero-text {
     padding: 80px 0;
 }
 
-html[theme] .hero-text h1 {
+html[data-theme] .hero-text h1 {
     color: var(--act-bg);
 }
 
@@ -75,7 +75,7 @@ html[theme] .hero-text h1 {
 
 /* MEDIA QUERIES --------------------------------------------------------------- */
 @media (min-width: 768px) {
-    html[theme] .hero img {
+    html[data-theme] .hero img {
     }
 
 }

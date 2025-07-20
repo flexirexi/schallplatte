@@ -1,0 +1,231 @@
+/* 
+INFO: 
+Bootstrap is used here -> in order to overwrite, use: 
+    <selector>[theme]           for elements in all themes, 
+    <selector>[theme="dark"]    for elements only in dark mode,
+    <selector>[theme=light"]    for elements only in light mode
+*/
+
+@import url("/static/css/themes.3f749ffd8c87.css");
+@import url("/static/css/layout.4803760c05bb.css");
+
+/* 01 Generic STYLES that apply for all html pages ------------------------------ */
+:root {
+    --rooms-count: 9;
+}
+
+html[theme="light"] body {
+    background-color: white;
+}
+
+html[data-theme] .container-fluid {
+    margin-top: var(--nav-height);
+    height: calc(100vh - var(--nav-height));
+}
+
+html[data-theme] .container-fluid-content {
+    height: 100%; 
+    overflow: hidden;
+}
+
+html[data-theme] main {
+    min-width: 0;
+}
+
+html[theme="dark"] main,
+html[theme="dark"] aside {
+    background-color: var(--bg);
+    margin-top: 0;
+    border-radius: 10px;
+}
+
+html[theme="light"] main,
+html[theme="light"] aside {
+    background-color: var(--bg2);
+    margin-top: 0;
+    border-radius: 10px;
+}
+
+/* 02 General classes for all pages --------------------------------------------- */
+html[data-theme] input,
+html[data-theme] select {
+    background-color: var(--bg2);
+    width: 100%;
+}
+
+html[data-theme] select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+html[data-theme] input[type=checkbox] {
+    width: 20px;
+}
+
+
+/* 03 specific elements -------------------------------------------------------- */
+html[data-theme] #myDatePicker {
+    background-color: var(--accent);
+    border: none;
+    color: black !important;
+}
+
+html[data-theme] #mobile-slideup {
+    background-color: var(--bg2);
+    z-index: 3;
+    transform: translateY(80%); 
+    transition: transform 0.3s;
+    border-radius: 20px;
+    box-shadow: -5px -5px 10px #00000035;
+    min-height: 300px;
+    border: 2px solid var(--link);
+    border-top: 3px solid var(--link);
+}
+
+html[data-theme] #mobileFilterDrawer {
+    background-color: var(--bg);
+}
+
+html[data-theme] .handle {
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+}
+
+.calendar-wrapper::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+  
+.calendar-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+  
+.calendar-wrapper::-webkit-scrollbar-thumb {
+    background-color: #000000a0;
+    border-radius: 4px;
+    background-clip: padding-box;
+    border: 2px solid transparent; 
+}
+
+.calendar-wrapper::-webkit-scrollbar-corner {
+    background: transparent; 
+}
+
+/* 04 SPECIAL: THE GRID -------------------------------------------------------- */
+html[data-theme] .calendar-wrapper {
+    height: 420px; /* Subtrahiere Picker-Höhe */
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    position: relative;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+html[data-theme] .calendar-grid {
+    display: grid;
+    grid-template-columns: 40px repeat(var(--rooms-count), minmax(80px, 1fr));
+    grid-auto-rows: 40px;
+    position: relative;
+    min-width: fit-content;
+    user-select: none;
+}
+
+/* Headings */
+html[data-theme] .calendar-header {
+    background-color: #000000;
+    text-align: center;
+    font-weight: 500;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    border-bottom: 2px solid #848688;
+    border-right: 1px solid #dee2e6;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-size: 13px;
+    box-shadow: 0px 0px 10px #000000;;
+}
+
+html[theme="dark"] .calendar-header {
+    color: var(--schallplatte);
+}
+
+html[theme="light"] .calendar-header {
+    color: var(--accent);
+}
+
+html[data-theme] .calendar-header.time-label {
+    background: #000000;
+    border-right: 3px solid #343a40;
+}
+
+
+html[data-theme] .calendar-time {
+    text-align: right;
+    padding-right: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text);
+    border-bottom: 1px solid #dee2e6;
+    border-right: 1px solid #2e333880;
+    box-shadow: 0px 15px 15px #000000b0;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+html[theme="dark"] .calendar-time {
+    background-color: var(--bg);
+}
+
+html[theme="light"] .calendar-time {
+    background-color: var(--bg2);
+}
+
+/* Cells ------------------------- */
+html[data-theme] .calendar-cell {    
+    background-color: var(--bg2);
+    border-bottom: 1px solid #aeb0b1;
+    border-right: 1px solid #aeb0b1;
+}
+
+html[theme="light"] .calendar-cell {
+    border: 1px solid #00000080;
+}
+
+html[data-theme] .calendar-cell:hover {
+    background-color: #00000050;
+    cursor: pointer;
+}
+
+html[data-theme] .calendar-cell.half-hour {
+    border-bottom: 1px solid #aeb0b1;
+}
+
+html[data-theme] .bg-user-booked {
+    background-color: var(--schallplatte);
+}
+
+html[data-theme] .bg-blocked {
+    background-color: #cf0b0b88;
+}
+
+html[data-theme] .selected-slot {
+    background-color: rgba(0, 123, 255, 0.3);
+    border: 1px solid #007bff;
+}
+
+
+/* MEDIA QUERIES --------------------------------------------------------------- */
+@media (min-width: 768px) {
+    html[data-theme] .calendar-wrapper {
+        height: calc(100% - 100px); /* Subtrahiere Picker-Höhe */
+        width: 100%;
+        overflow-y: scroll;
+        overflow-x: scroll;
+        position: relative;
+        border-radius: 5px;
+        margin-top: 15px;
+    }
+
+}

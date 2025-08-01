@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         wrapper.scrollTo({
             top: wrapper.scrollHeight * (2 / 3),
             behavior: "smooth"
-          });
+        });
     }
     
     document.querySelector('.handle').addEventListener('click', () => {
@@ -28,6 +28,7 @@ function calendarUX() {
     let selectionStartValue = null;
     let selectedRoom = null;
     let selectedSlots = new Set();
+    let touchSelectionStart = null;
 
     document.querySelectorAll(".calendar-cell").forEach(cell => {
         cell.addEventListener("mousedown", () => {
@@ -46,7 +47,7 @@ function calendarUX() {
                 booking_not_blocked();
             }
         });
-      
+    
         cell.addEventListener("mouseenter", () => {
             if (isSelecting && cell.dataset.room === selectedRoom) {
                 const hour = parseInt(cell.dataset.hour);
@@ -109,7 +110,7 @@ function calendarUX() {
                 }
             }
         });
-      
+    
         cell.addEventListener("mouseup", () => {
             isSelecting = false;
             selectedRoom = null;
@@ -118,12 +119,39 @@ function calendarUX() {
             
 
         });
+
+        cell.addEventListener("click", () => {
+            if (!isTouchDevice()) return;
+
+            const hour = parseInt(cell.dataset.hour);
+            const half = parseInt(cell.dataset.half);
+            const currentValue = hour * 2 + half;
+            const room = cell.dataset.room;
+
+            if (cell.dataset.blocked === "ture") {
+                booking_blocked();
+                return;
+            }
+
+            if (!touchSelectionStart) {
+                // first touch: remember start
+                touchSelectionStart = {value: currentValue, room};
+                removeHighlights();
+                highlightCell(cell);
+            } else if (touchSelectionStart.room == room) {
+                // second touch
+                const from = Math.min(touchSelectionStart.value, currentValue);
+                const to = Math.max(touchSelectionStart.value, currentValue);
+
+                
+            }
+        });
     }); 
-      
+    
     document.addEventListener("mouseup", () => {
         isSelecting = false;
     });
-      
+    
     function highlightCell(cell) {
         cell.classList.add("selected-slot");
     }
@@ -132,6 +160,11 @@ function calendarUX() {
         document.querySelectorAll(".calendar-cell").forEach(c => {
             c.classList.remove("selected-slot");
         });
+    }
+
+    //adding touch function
+    function isTouchDevice() {
+        return "onTouchstart" in window || navigator.maxTouchPoints > 0;
     }
 }
 

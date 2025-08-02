@@ -115,14 +115,12 @@ function calendarUX() {
             isSelecting = false;
             selectedRoom = null;
             selectionStartValue = null;
-            
-            
-
         });
 
-        cell.addEventListener("click", () => {
-            if (!isTouchDevice()) return;
-
+        cell.addEventListener("touchend", (e) => {
+            e.preventDefault();
+            // if (!isTouchDevice()) return;
+            console.log("click event funzt");
             const hour = parseInt(cell.dataset.hour);
             const half = parseInt(cell.dataset.half);
             const currentValue = hour * 2 + half;
@@ -142,8 +140,21 @@ function calendarUX() {
                 // second touch
                 const from = Math.min(touchSelectionStart.value, currentValue);
                 const to = Math.max(touchSelectionStart.value, currentValue);
+                document.querySelectorAll(`.calendar-cell[data-room="${room}"]`).forEach(c => {
+                    const h = parseInt(c.dataset.hour);
+                    const m = parseInt(c.dataset.half);
+                    const val = h * 2 + m;
+                    if (val >= from && val <= to) {
+                        highlightCell(c);
+                    }
+                });
 
-                
+                updateForms(from, to, room);
+                booking_not_blocked();
+                touchSelectionStart = null;
+            } else {
+                touchSelectionStart = null;
+                removeHighlights();
             }
         });
     }); 
@@ -165,6 +176,23 @@ function calendarUX() {
     //adding touch function
     function isTouchDevice() {
         return "onTouchstart" in window || navigator.maxTouchPoints > 0;
+    }
+
+    function updateForms(from, to, roomId) {
+        const startVal = formatStart(from);
+        const endVal = formatEnd(to);
+
+        // desktop version
+        document.getElementById("id_start").value = startVal;
+        document.getElementById("id_end").value = endVal;
+        document.getElementById("id_room").value = roomId;
+        document.getElementById("id_room_fake").value = roomId;
+
+        // mobile version
+        document.getElementById("id_start-mobile").value = startVal;
+        document.getElementById("id_end-mobile").value = endVal;
+        document.getElementById("id_room-mobile").value = roomId;
+        document.getElementById("id_room_fake-mobile").value = roomId;
     }
 }
 
@@ -188,7 +216,7 @@ function formatStart(selectionStartValue) {
     let dateform = document.getElementById("myDatePicker");
     
     return `${dateform.value}T${ hour.toString().padStart(2, "0")}:${minutes}`;
-  }
+}
 
 function formatEnd(selectionEndValue) {
     selectionEndValue = selectionEndValue + 1

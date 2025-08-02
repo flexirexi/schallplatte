@@ -154,7 +154,7 @@
         <!-- desktop -->
         <aside id="slot-detail-panel" class="d-none d-md-block col-md-3 p-3 m-1">
             <h5>Details for your selection</h5>
-            <br>
+            
             <form method="post" action="{% url 'rooms:booking' %}" id="booking-form">
                 {% csrf_token %}
             
@@ -223,14 +223,15 @@
                             {{ form.start|attr:"readonly"|attr:"id:id_start-mobile" }}
                         </div>
                     
-                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                        <div class="mb-1 d-flex justify-content-between align-items-center">
                             <label for="{{ form.end.id_for_label }}-mobile" class="me-3 mb-0">{{ form.end.label }}</label>
                             {{ form.end|attr:"readonly"|attr:"id:id_end-mobile" }}
                         </div>
                     
                         {{ form.user }} {# hidden input #}
-                    
-                        <button type="submit" class="btn btn-primary mt-3 w-100" id="booking-submit-mobile">Confirm</button>
+                        <div class="px-4">
+                            <button type="submit" class="btn btn-primary mt-2 w-100 me-3" id="booking-submit-mobile">Confirm</button>
+                        </div>    
                         {% if form.errors %}
                         <div class="alert alert-danger">
                             <ul>

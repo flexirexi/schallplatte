@@ -54,14 +54,12 @@ function calendarUX() {
                 const half = parseInt(cell.dataset.half);
                 const currentValue = hour * 2 + half;
                 const blocked = cell.dataset.blocked;
-                
 
                 const from = Math.min(selectionStartValue, currentValue);
                 const to = Math.max(selectionStartValue, currentValue);
                 if (blocked=="true") {
                     booking_blocked();
                 } 
-
 
                 document.querySelectorAll(`.calendar-cell[data-room="${selectedRoom}"]`).forEach(c => {
                     const h = parseInt(c.dataset.hour);
@@ -117,7 +115,7 @@ function calendarUX() {
             selectionStartValue = null;
         });
 
-        cell.addEventListener("touchend", (e) => {
+        cell.addEventListener("click", (e) => {
             e.preventDefault();
             // if (!isTouchDevice()) return;
             console.log("click event funzt");
@@ -126,7 +124,7 @@ function calendarUX() {
             const currentValue = hour * 2 + half;
             const room = cell.dataset.room;
 
-            if (cell.dataset.blocked === "ture") {
+            if (cell.dataset.blocked === "true") {
                 booking_blocked();
                 return;
             }
@@ -136,6 +134,7 @@ function calendarUX() {
                 touchSelectionStart = {value: currentValue, room};
                 removeHighlights();
                 highlightCell(cell);
+                booking_blocked_on_first_touch();
             } else if (touchSelectionStart.room == room) {
                 // second touch
                 const from = Math.min(touchSelectionStart.value, currentValue);
@@ -145,12 +144,15 @@ function calendarUX() {
                     const m = parseInt(c.dataset.half);
                     const val = h * 2 + m;
                     if (val >= from && val <= to) {
+                        if (c.dataset.blocked === "true") {
+                            booking_blocked();
+                            return;
+                        }
                         highlightCell(c);
                     }
                 });
 
                 updateForms(from, to, room);
-                booking_not_blocked();
                 touchSelectionStart = null;
             } else {
                 touchSelectionStart = null;
@@ -196,18 +198,40 @@ function calendarUX() {
     }
 }
 
+function booking_blocked_on_first_touch() {
+    const btn = document.getElementById("booking-submit");
+    const msg = document.getElementById("form-error-msg");
+    const btn_mobile = document.getElementById("booking-submit-mobile");
+    const msg_mobile = document.getElementById("form-error-msg-mobile");
+    
+    btn.disabled = true;
+    btn_mobile.disabled = true;
+    msg.innerHTML = "Please select an end time slot.";
+    msg_mobile.innerHTML = "Please select an end time slot.";
+}
+
 function booking_blocked() {
     const btn = document.getElementById("booking-submit");
     const msg = document.getElementById("form-error-msg");
+    const btn_mobile = document.getElementById("booking-submit-mobile");
+    const msg_mobile = document.getElementById("form-error-msg-mobile");
+    
     btn.disabled = true;
+    btn_mobile.disabled = true;
     msg.innerHTML = "No booking possible. Your selection overlaps with existing bookings.";
+    msg_mobile.innerHTML = "No booking possible. Your selection overlaps with existing bookings.";
 }
 
 function booking_not_blocked() {
     const btn = document.getElementById("booking-submit");
     const msg = document.getElementById("form-error-msg");
+    const btn_mobile = document.getElementById("booking-submit-mobile");
+    const msg_mobile = document.getElementById("form-error-msg-mobile");
+    
     btn.disabled = false;
+    btn_mobile.disabled = false;
     msg.innerHTML = "";
+    msg_mobile.innerHTML = "";
 }
 
 function formatStart(selectionStartValue) {

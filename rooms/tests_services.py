@@ -73,3 +73,50 @@ def test_user_and_all_cell_keys():
     assert len(a_keys) == 4
 
 
+@pytest.mark.django_db
+def test_save_booking_success():
+    user = User.objects.create_user(username="book")
+    room = Room.objects.create(
+        name="R",
+        size_cat="x",
+        drum_kit="x",
+        guitar_amps="x",
+        bass_amps="x",
+        piano="x",
+        synth="x"
+    )
+
+    start = timezone.now().replace(hour=12, minute=0)
+    end = start + timedelta(hours=1)
+    cc = CalendarCursor(start.date(), user)
+    cc.save_booking(user, room, start, end)
+
+    assert RoomCalendar.objects.count() == 1
+
+
+@pytest.mark.django_db
+def test_save_booking_conflict_raises():
+    user = User.objects.create_user(username="booker")
+    room = Room.objects.create(
+        name="X", 
+        size_cat="X", 
+        drum_kit="X", 
+        guitar_amps="X",
+        bass_amps="x", 
+        piano="x", 
+        synth="x"
+    )
+
+    start = timezone.now().replace(hour=14, minute=0)
+    end = start + timedelta(hours=2)
+
+    RoomCalendar.objects.create(
+        user=user, 
+        room=room, 
+        start_daytime=start, 
+        end_daytime=end
+    )
+
+    cc = CalendarCursor(start.date(), user)
+    with pytest.raises(ValueError):
+        cc.save_booking(user, room, start + timedelta(minutes=30), end + timedelta(hours=1))

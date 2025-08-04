@@ -41,6 +41,31 @@ def test_roomcalendar_str():
         start_daytime=start,
         end_daytime=end
     )
-    
+
     expected = f"{room.name},{user}: {start} - {end}"
     assert str(booking) == expected
+
+
+@pytest.mark.django_db
+def test_cascade_delete_room():
+    user = User.objects.create_user(username="the_deleter")
+    room = Room.objects.create(
+        name="Delete-room",
+        size_cat="30qm",
+        drum_kit="Pearl",
+        guitar_amps="Boss",
+        bass_amps="Trace Elliot",
+        piano="Yes",
+        synth="No"
+    )
+    booking = RoomCalendar.objects.create(
+        room=room, user=user,
+        start_daytime=timezone.now(),
+        end_daytime=timezone.now() + timedelta(hours=1)
+    )
+    assert RoomCalendar.objects.count() == 1
+
+    room.delete()
+    assert RoomCalendar.objects.count() == 0
+
+

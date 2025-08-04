@@ -47,3 +47,19 @@ def test_booking_success(client):
     assert RoomCalendar.objects.count() == 1
     assert "Booking successful." in [msg.message for msg in response.context["messages"]]
 
+
+@pytest.mark.django_db
+def test_booking_invalid(client):
+    user = User.objects.create_user(username="badbooker", password="pass")
+    client.login(username="badbooker", password="pass")
+
+    data = {
+        "start:": "",
+        "end": "",
+        "room": ""
+    }
+
+    response = client.post(reverse("rooms:booking"), data, follow=True)
+    assert response.status_code == 200
+    assert RoomCalendar.objects.count() == 0
+    assert "Booking failed. Please try again." in [msg.message for msg in response.context["messages"]]

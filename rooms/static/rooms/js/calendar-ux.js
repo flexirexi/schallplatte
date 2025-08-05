@@ -152,7 +152,7 @@ export function calendarUX(wrapper) {
     });
 }
 
-function updateForms(from, to, roomId) {
+export function updateForms(from, to, roomId) {
     const startVal = formatStart(from);
     const endVal = formatEnd(to);
 

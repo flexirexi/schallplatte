@@ -23,13 +23,27 @@ describe("collapseNavBar()", () => {
         jest.clearAllMocks();
     });
 
-    test("calls .hide() when innerWidth <= 768px", () => {
+    test("Calls .hide() when innerWidth <= 768px", () => {
         global.innerWidth = 600;
         collapseNavBar();
 
         expect(bootstrap.Collapse.getOrCreateInstance).toHaveBeenCalled();
         const instance = bootstrap.Collapse.getOrCreateInstance.mock.results[0].value;
         expect(instance.hide).toHaveBeenCalled();
+    });
+
+    test("Doesn't call .hide() when innerWidth > 768px", () => {
+        global.innerWidth = 769;
+        collapseNavBar();
+        expect(bootstrap.Collapse.getOrCreateInstance).not.toHaveBeenCalled();
+    });
+
+    test("No misbehavior when body is empty", () => {
+        document.body.innerHTML = "";
+        global.innerWidth = 600;
+
+        expect(() => collapseNavBar()).not.toThrow();
+        expect(bootstrap.Collapse.getOrCreateInstance).not.toHaveBeenCalled();
     });
 
 });

@@ -12,7 +12,7 @@ import json
 from django.http import JsonResponse
 from django.urls import reverse
 
-
+@login_required
 def calendar(request):
     selected_date = request.GET.get("selected_date")
 

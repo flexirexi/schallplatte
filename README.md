@@ -2,7 +2,7 @@
 
  # Die Schallplatte - the music center
  Developer: Felix Lehmann<br>
-Heroku App: [Link](https://schallplatte-a3c727a1af8b.herokuapp.com/)<br>
+Render.com App: [Link](https://schallplatte.onrender.com/)<br>
 Github: [Link](https://github.com/flexirexi/schallplatte)
 
  This project simulates a music center, called Schallplatte, which rents 9 rehearsal rooms to its members/musicians. It seeks to create and maintain a community for musicians, that's why an online forum has been announced for the near future. As hinted in the milestones (the about page), an own rock event/festival is planned. By now, the modern and minimalistic design of this website shall attract for young people. So, this project is solely done in a mobile-first principle. Moreover, an upcoming forum on this website is announced, which shows the vitality of this builing. For explanation: "Schallplatte" is the German word for a vinyl.
@@ -15,12 +15,10 @@ Github: [Link](https://github.com/flexirexi/schallplatte)
  - U: w.heisenberg P: quantum1925 
  - U: e.schroedinger P: cats1935
 
- Of course you can also register and test it that way.
-
  **Currently, these days have the most booked items:**
- - 16/04/2025
- - 29/04/2025
- - 30/04/2025
+ - 02/08/2025
+ - 06/08/2025
+ - 30/08/2025
 
 **Feel free to register and try it out**
 
@@ -109,25 +107,30 @@ These two principles from above significantly improves User experience and stabi
 ## Wireframes
 The page design can be put into 3 main categories. 
 
-<details>
+<details open>
   <summary>
   core pages (like landing page, about, rooms presentation and forum announcement). Typical: hero sections, simplistic and centralized design.
   </summary>
-  <img src="doc/wireframes/wf01.png" width="400px">
-  <img src="doc/wireframes/wf02.png" width="400px">
-  <img src="doc/wireframes/wf03.png" width="400px">
+  <img src="doc/wireframes/wf01.png" width="350px">
+  <img src="doc/wireframes/wf02.png" width="350px">
+  <img src="doc/wireframes/wf03.png" width="350px">
 </details>
-<details>
+<br><br>
+
+<details open>
   <summary>user pages like login, register, profile edit, notifications. </summary>
   <img src="doc/wireframes/wf_user01.png" width="400px">
   <img src="doc/wireframes/wf_user02.png" width="400px">
   <img src="doc/wireframes/wf_user03.png" width="400px">
   <img src="doc/wireframes/wf_user04.png" width="400px">
 </details>
-<details>
+<br><br>
+
+<details open>
   <summary>calendar tool for booking rooms. It's a one page "application" that fits all necessary features on one screen.</summary>
-  <img src="doc/wireframes/wf_calendar.png" width="400px">
+  <img src="doc/wireframes/wf_calendar.png" width="800px">
 </details>
+<br><br>
 
 
 ## Colors and Theme
@@ -372,7 +375,7 @@ Important:
 
 
 ### Test 8
-<details>
+<details open>
 <summary>I can successfully book a rehearsal room so that I can enter it an practice music</summary>
 <img src="doc/img/manual_testing/us_08_1.png" width="600px">
 <img src="doc/img/manual_testing/us_08_2.png" width="600px">
@@ -390,7 +393,7 @@ Important:
 
 
 ### Test 9
-<details>
+<details open>
 <summary>I can modify existing bookings so that it fits into my personal time schedule</summary>
 <img src="doc/img/manual_testing/us_09_1.png" width="600px">
 <img src="doc/img/manual_testing/us_09_2.png" width="600px">
@@ -405,7 +408,7 @@ Important:
 
 
 ### Test 10
-<details>
+<details open>
 <summary>I can cancel bookings so that I can free up time slots for others</summary>
 <img src="doc/img/manual_testing/us_10_1.png" width="600px">
 <img src="doc/img/manual_testing/us_10_2.png" width="600px">
@@ -419,7 +422,7 @@ Important:
 
 
 ### Test 11
-<details>
+<details open>
 <summary>I can choose time slots in a calendar view so that I can see if rooms are available before I actually request the booking</summary>
 <img src="doc/img/manual_testing/us_11.png" width="600px">
 </details>
@@ -433,7 +436,7 @@ Important:
 
 
 ### Test 12
-<details>
+<details open>
 <summary>I can filter rooms by containing instruments and room size so that I can find suitable rooms efficiently</summary>
 <img src="doc/img/manual_testing/us_12_1.png" width="600px">
 <img src="doc/img/manual_testing/us_12_2.png" width="600px">
@@ -448,7 +451,7 @@ Important:
 
 
 ### Test 13
-<details>
+<details open>
 <summary>I can log out from my profile so that others can't enter it (accidentally).</summary>
 <img src="doc/img/manual_testing/us_13_1.png" width="600px">
 <img src="doc/img/manual_testing/us_13_2.png" width="600px">
@@ -464,7 +467,7 @@ Important:
 
 
 ### Test 14
-<details>
+<details open>
 <summary>I can view/edit my profile so that I have full control about my own data.</summary>
 <img src="doc/img/manual_testing/us_14_1.png" width="600px">
 <img src="doc/img/manual_testing/us_14_2.png" width="600px">
@@ -543,7 +546,7 @@ Important:
 # Bugs
 
 <details>
-  <summary>in mobile mode (only), it is possible to select time slots that are booked already. in desktop mode you get an error message.
+  <summary><span style="color: lightgreen;">FIXED:</span> in mobile mode (only), it is possible to select time slots that are booked already. in desktop mode you get an error message.
   </summary>
 <img src="doc/bugs/mobile_data_validation.png" width="300px">
 

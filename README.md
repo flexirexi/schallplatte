@@ -368,6 +368,8 @@ Important:
 <br>
 
 
+<h4 style="color: yellow;">As a member</h4>
+
 
 ### Test 8
 <details>
@@ -390,13 +392,104 @@ Important:
 ### Test 9
 <details>
 <summary>I can modify existing bookings so that it fits into my personal time schedule</summary>
-<img src="doc/img/manual_testing/us_.png" width="600px">
+<img src="doc/img/manual_testing/us_09_1.png" width="600px">
+<img src="doc/img/manual_testing/us_09_2.png" width="600px">
+<img src="doc/img/manual_testing/us_09_3.png" width="600px">
 </details>
 
 | Feature        | Action   | Expected Result | Actual Result  |
 |----------------|-----------------------|--------------------|---------------------|
 | Booking System     | visit `/rooms/calendar/` by clicking on "book" in the profile page or rooms-page: Select time slot and submit booking   | Booking is saved and visible in the profile page + success toast is shown | Works as expected|
 <br>
+
+
+
+### Test 10
+<details>
+<summary>I can cancel bookings so that I can free up time slots for others</summary>
+<img src="doc/img/manual_testing/us_10_1.png" width="600px">
+<img src="doc/img/manual_testing/us_10_2.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Booking Management | Cancel an existing booking on the profile page   | Booking is removed and time slot becomes available   | Works as expected |
+<br>
+
+
+
+### Test 11
+<details>
+<summary>I can choose time slots in a calendar view so that I can see if rooms are available before I actually request the booking</summary>
+<img src="doc/img/manual_testing/us_11.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Calendar View  | Open calendar and hover/select slots | Availability of rehearsal rooms is clearly visible and selectable | Works as expected |
+<br>
+
+
+
+
+### Test 12
+<details>
+<summary>I can filter rooms in the booking containing instrument so that I can find suitable efficiently</summary>
+<img src="doc/img/manual_testing/us_12.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Room Filter      | Use size/instrument filters before booking   | Only matching rooms are shown; booking becomes faster and more convenient  | <span style="color: red;">Not Done Yet</span> |
+<br>
+
+
+
+
+### Test 13
+<details>
+<summary>I can log out from my profile so that others can't enter it (accidentally).</summary>
+<img src="doc/img/manual_testing/us_13_1.png" width="600px">
+<img src="doc/img/manual_testing/us_13_2.png" width="600px">
+<img src="doc/img/manual_testing/us_13_3.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Logout      | Click logout button     | Session ends, user is redirected and protected + success toast | Works as expected |
+<br>
+
+
+
+
+### Test 14
+<details>
+<summary>I can view/edit my profile so that I have full control about my own data.</summary>
+<img src="doc/img/manual_testing/us_14_1.png" width="600px">
+<img src="doc/img/manual_testing/us_14_2.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Profile Page  | Visit and edit profile fields | Personal data is displayed and can be updated successfully by using a toggle button | Works as expected |
+<br>
+
+
+
+### Test 15
+<details>
+<summary>I can view/receive permanent notifications in my personal account so that I can view the booking history.</summary>
+<img src="doc/img/manual_testing/us_15_1.png" width="600px">
+<img src="doc/img/manual_testing/us_15_2.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Booking Notifications   | Open profile or dashboard area        | Past bookings are listed or visible via permanent notification/messages    | <span style="color: red;">Not Done Yet</span>  |
+<br>
+
+
+
 
 
 

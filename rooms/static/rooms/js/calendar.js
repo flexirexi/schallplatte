@@ -42,8 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
     calendarUX(wrapper)
 });
 
+["booking-submit", "booking-submit-mobile", "booking-button-mobile"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) {
+        btn.addEventListener("click", handleBookingSubmit);
+    }
+});
 
-document.getElementById("booking-submit").addEventListener("click", function (e) {
+function handleBookingSubmit(e) {
+
     const realRoom = document.getElementById("id_room");
     const fakeRoom = document.getElementById("id_room_fake");
     realRoom.value = fakeRoom.value;
@@ -62,10 +69,9 @@ document.getElementById("booking-submit").addEventListener("click", function (e)
     };
     console.log(payload);
 
-    // Edit-Modus: fetch statt Submit
-    if (window.editBookingId) {
-        e.preventDefault(); // klassisches Form-Submit blockieren
 
+    if (window.editBookingId) {
+        e.preventDefault(); 
         fetch(`/rooms/edit_booking/${window.editBookingId}/submit/`, {
             method: "POST",
             headers: {
@@ -75,13 +81,12 @@ document.getElementById("booking-submit").addEventListener("click", function (e)
             body: JSON.stringify(payload)
         }).then(response => {
             if (response.ok) {
-                window.location.href = "/user/profile/"; // Nach erfolgreichem Edit
+                window.location.href = "/rooms/calendar"; 
             } else {
                 alert("Fehler beim Speichern");
             }
         });
 
     } 
-    // Create-Modus: kein fetch – Form wird klassisch abgeschickt
-    // kein e.preventDefault() → normales Submit
-});
+
+}

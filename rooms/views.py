@@ -10,6 +10,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 import json
 from django.http import JsonResponse
+from django.urls import reverse
 
 
 def calendar(request):
@@ -41,16 +42,22 @@ def booking(request):
     if request.method == "POST":
         form = BookingForm(request.POST)
         if form.is_valid():
-            form.cleaned_data["user"] = request.user
-            date = form.cleaned_data["start"].date()
-            cursor = CalendarCursor(date, request.user)
-            cursor.save_booking(
-                user=request.user,
-                room=form.cleaned_data["room"],
-                start=form.cleaned_data["start"],
-                end=form.cleaned_data["end"],
-            )
-            messages.success(request, "Booking successful.")
+            try:
+                form.cleaned_data["user"] = request.user
+                date = form.cleaned_data["start"].date()
+                cursor = CalendarCursor(date, request.user)
+                cursor.save_booking(
+                    user=request.user,
+                    room=form.cleaned_data["room"],
+                    start=form.cleaned_data["start"],
+                    end=form.cleaned_data["end"],
+                )
+                messages.success(request, "Booking successful.")
+            except ValueError as e:
+                messages.error(request, str(e))
+                return render(request, "rooms/calendar.html", {
+                    "edit_booking": False,
+                })
         else:
             print(form.errors)
             messages.error(request, "Booking failed. Please try again.")
@@ -102,4 +109,4 @@ def edit_booking_submit(request, booking_id):
     except Exception:
         messages.error(request, "Modification failed. Please try again.")
 
-    return JsonResponse({"status": "ok"})
+    return JsonResponse({"status": "ok", "redirect_url": reverse("rooms:calendar")})

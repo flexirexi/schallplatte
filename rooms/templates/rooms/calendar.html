@@ -240,8 +240,8 @@
                         {{ form.user }} {# hidden input #}
                         <div class="px-4">
                             {% if edit_booking %}
-                                <!-- Edit-Modus: Button calls Fetch auf -->
-                                <button type="button" class="btn btn-warning w-100 mt-2" id="booking-submit-mobile">
+                                <!-- Edit-Modus: Button calls Fetch -->
+                                <button type="button" class="btn btn-warning w-100 mt-2" id="booking-button-mobile">
                                     Save changes
                                 </button>
                             {% else %}
@@ -249,7 +249,7 @@
                                     Confirm
                                 </button>
                             {% endif %}
-                            <button type="submit" class="btn btn-primary mt-2 w-100 me-3" id="booking-submit-mobile">Confirm</button>
+                            
                         </div>    
                         {% if form.errors %}
                         <div class="alert alert-danger">

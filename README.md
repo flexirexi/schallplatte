@@ -434,13 +434,14 @@ Important:
 
 ### Test 12
 <details>
-<summary>I can filter rooms in the booking containing instrument so that I can find suitable efficiently</summary>
-<img src="doc/img/manual_testing/us_12.png" width="600px">
+<summary>I can filter rooms by containing instruments and room size so that I can find suitable rooms efficiently</summary>
+<img src="doc/img/manual_testing/us_12_1.png" width="600px">
+<img src="doc/img/manual_testing/us_12_2.png" width="600px">
 </details>
 
 | Feature        | Action   | Expected Result | Actual Result  |
 |----------------|-----------------------|--------------------|---------------------|
-| Room Filter      | Use size/instrument filters before booking   | Only matching rooms are shown; booking becomes faster and more convenient  | <span style="color: red;">Not Done Yet</span> |
+| Room Filter      | Use size/instrument filters before booking   | Only matching rooms are shown; booking becomes faster and more convenient  | Works as expected |
 <br>
 
 
@@ -497,11 +498,28 @@ Important:
 
 ## Automated Testing
 ## Python
-While using black pycodestyle to auto format, there are some infos and warnings. To, me they seem harmless..  
-<details>
-  <summary>NO ERRORS, just "could not be resolved" and "unknown word (German words)"</summary>
-  <img src="doc/validation/py/pep8.png" width="300px">
+
+<details open>
+  <summary>ROOMS APP: Models testing <span style="color: lightgreen;">(3 passed, no fails)</span></summary>
+  <br>
+  <img src="doc/img/automated_testing/pytest_01.png" width="750px">
 </details>
+<br><br>
+
+<details open>
+  <summary>ROOMS APP: Custom CalendarCursor-Class testing in services.py<span style="color: lightgreen;"> (5 passed, no fails)</span></summary>
+  <br>
+  <img src="doc/img/automated_testing/pytest_02.png" width="750px">
+</details>
+<br><br>
+
+<details open>
+  <summary>ROOMS APP: views.py<span style="color: lightgreen;"> (3 passed, no fails)</span></summary>
+  <br>
+  <img src="doc/img/automated_testing/pytest_03.png" width="750px">
+</details>
+<br><br>
+
 
 ## JEST
 

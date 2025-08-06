@@ -491,11 +491,6 @@ Important:
 
 
 
-
-
-
-
-
 ## Automated Testing
 ## Python
 
@@ -523,6 +518,28 @@ Important:
 
 ## JEST
 
+<details open>
+  <summary>MAIN APP: base.js<span style="color: yellow;"> (3 passed, no fails)</span></summary>
+  <br>
+  <img src="doc/img/automated_testing/npm_test_01.png" width="750px">
+</details>
+<br><br>
+
+
+<details open>
+  <summary>ROOMS APP: calendar.js/ calendar-ux.js/ calendar-utils.js<span style="color: yellow;"> (7 passed, no fails)</span></summary>
+  <br>
+  <img src="doc/img/automated_testing/npm_test_02.png" width="750px">
+</details>
+<b>Changes that were done due to the testing:</b>
+
+- calendar.js was too complex to be tested by JEST, so, I excluded UX and UTILS and created 3 js-files
+- also the continuous testing of these 3 files is crucial when doing further developments
+- for that, also the most basic functions are tested for their outcome
+<br><br>
+
+
+
 # Bugs
 
 <details>
@@ -533,15 +550,32 @@ Important:
 </details>
 
 
-# Heroku deployment
-The project was deployed via github in heroku. 
-- go to Heroku dashboard, create a new app
-- after creation, under Settings -> config var -> click on reveal config vars and ADD:
-    - DISABLE_COLLECTSTATIC with a value of 1
-- in settings.py, add Heroku's hostname to ALLOWED_HOSTS:
-- go to the deploy tab -> Deployment method -> enable GitHub integration: click on Connect to GitHub, you might authenticate-   search for your github repo, scroll down, deploy branch main,
-- to to Resources tab, choose an Eco Dyno which is the lightweight container to run your app
-- remove any database add-on from the Resources tab - can result in usage costs..
+# Render.com deployment
+The project has been moved to render.com for deployment. The reasons are simple: 
+- deployments are easy and less "risky"
+- build commands, such as `pip install -4 requirements.txt && python manage.py collectstatic --noinput`
+- in case of issues, there is a powershell on render.com (which is affordable)
+
+<b>Deployment:</b>
+
+- prepare requirements.txt, incl. `gunicorn` and `whitenoise`
+- prepare settings.py
+  - `DEBUG=False`
+  - `ALLOWED_HOSTS=['".onrender.com", "schallplatte.onrender.com"']`
+  - use whitenoise when `DEBUG=False`
+    ```
+    if not DEBUG:
+      STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    ```
+- run the command in the bash `python manage.py collectstatic --noinput`
+- go to <b>render.com</b>
+  - create a new web service
+  - connect github repository to render.com
+  - enter the build command (recommended): `pip install -r requirements.txt && python manage.py collectstatic --noinput`
+  - enter start command: `gunicorn schallplatte.wsgi:application`
+  - enter environment variables, such as `SECRET_KEY`, `DEBUG=False`, `ALLOWED_HOSTS=.onrender.com` (or similar), `DATABASE_URL`
+- ensure that collectstatic really was done, in case of doubt, run collectstatic in the powershell on onrender.com directly (not local) 
+
 
 # Credits
 ## References

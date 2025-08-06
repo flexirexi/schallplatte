@@ -14,21 +14,24 @@
 
 <div class="container-fluid p-0">
     <div class="container-fluid-content d-flex flex-column flex-md-row">
+        <!-- filterForm: form elements will access this form via the attribute "form"-->
+        <form method="get" id="filterForm"></form>
+
         <!-- Left desktop filter drawer (in mobile-mode: hidden) -->
         <aside id="filter-panel" class="d-none d-md-block col-md-3 p-3 m-1">
             <!-- filters here -->
             <h5>Filter</h5>
             <h5 class="mb-3">Room Size</h5>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="large" id="filterSizeLarge">
+                <input class="form-check-input" type="checkbox" value="large" id="filterSizeLarge" name="filter_sizes" form="filterForm">
                 <label class="form-check-label" for="filterSizeLarge">Large (bis 10 Personen)</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="medium" id="filterSizeMedium">
+                <input class="form-check-input" type="checkbox" value="medium" id="filterSizeMedium" name="filter_sizes" form="filterForm">
                 <label class="form-check-label" for="filterSizeMedium">Medium (bis 5 Personen)</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="small" id="filterSizeSmall">
+                <input class="form-check-input" type="checkbox" value="small" id="filterSizeSmall" name="filter_sizes" form="filterForm">
                 <label class="form-check-label" for="filterSizeSmall">Small (bis 3 Personen)</label>
             </div>
 
@@ -36,19 +39,19 @@
 
             <h5 class="mb-3">Instruments</h5>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="piano" id="filterInstrumentPiano">
+                <input class="form-check-input" type="checkbox" value="piano" id="filterInstrumentPiano" name="filter_instrument" form="filterForm">
                 <label class="form-check-label" for="filterInstrumentPiano">Piano</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="drumkit" id="filterInstrumentDrumkit">
+                <input class="form-check-input" type="checkbox" value="drumkit" id="filterInstrumentDrumkit" name="filter_instrument" form="filterForm">
                 <label class="form-check-label" for="filterInstrumentDrumkit">Drum Kit</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="amps" id="filterInstrumentAmps">
+                <input class="form-check-input" type="checkbox" value="amps" id="filterInstrumentAmps" name="filter_instrument" form="filterForm">
                 <label class="form-check-label" for="filterInstrumentAmps">Amps (Gitarre / Bass)</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="synth" id="filterInstrumentSynth">
+                <input class="form-check-input" type="checkbox" value="synth" id="filterInstrumentSynth" name="filter_instrument" form="filterForm">
                 <label class="form-check-label" for="filterInstrumentSynth">Synthesizer</label>
             </div>
         </aside>
@@ -70,15 +73,15 @@
                 <h5>Filter</h5>
                 <h5 class="mb-3">Room Size</h5>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="large" id="filterSizeLargeMobile">
+                    <input class="form-check-input" type="checkbox" value="large" id="filterSizeLargeMobile" name="filter_sizes" form="filterForm">
                     <label class="form-check-label" for="filterSizeLargeMobile">Large (bis 10 Personen)</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="medium" id="filterSizeMediumMobile">
+                    <input class="form-check-input" type="checkbox" value="medium" id="filterSizeMediumMobile" name="filter_sizes" form="filterForm">
                     <label class="form-check-label" for="filterSizeMediumMobile">Medium (bis 5 Personen)</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="small" id="filterSizeSmallMobile">
+                    <input class="form-check-input" type="checkbox" value="small" id="filterSizeSmallMobile" name="filter_sizes" form="filterForm">
                     <label class="form-check-label" for="filterSizeSmallMobile">Small (bis 3 Personen)</label>
                 </div>
 
@@ -86,19 +89,19 @@
 
                 <h5 class="mb-3">Instruments</h5>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="piano" id="filterInstrumentPianoMobile">
+                    <input class="form-check-input" type="checkbox" value="piano" id="filterInstrumentPianoMobile" name="filter_instrument" form="filterForm">
                     <label class="form-check-label" for="filterInstrumentPianoMobile">Piano</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="drumkit" id="filterInstrumentDrumkitMobile">
+                    <input class="form-check-input" type="checkbox" value="drumkit" id="filterInstrumentDrumkitMobile" name="filter_instrument" form="filterForm">
                     <label class="form-check-label" for="filterInstrumentDrumkitMobile">Drum Kit</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="amps" id="filterInstrumentAmpsMobile">
+                    <input class="form-check-input" type="checkbox" value="amps" id="filterInstrumentAmpsMobile" name="filter_instrument" form="filterForm">
                     <label class="form-check-label" for="filterInstrumentAmpsMobile">Amps (Gitarre / Bass)</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="synth" id="filterInstrumentSynthMobile">
+                    <input class="form-check-input" type="checkbox" value="synth" id="filterInstrumentSynthMobile" name="filter_instrument" form="filterForm">
                     <label class="form-check-label" for="filterInstrumentSynthMobile">Synthesizer</label>
                 </div>
             </div>
@@ -116,9 +119,9 @@
                 <div class="calendar-grid">
                     <!-- First row: header -->
                     <div class="calendar-time time-label"></div> <!-- leere Ecke -->
-                    {% if rooms|length == 3 %}
-                        <style>:root { --rooms-count: {{ rooms.count }};}</style>
-                    {% endif %}
+                    
+                    <style>:root { --rooms-count: {{ rooms.count }};}</style>
+                    
                     {% for room in rooms %}
                         <div class="calendar-header">{{ room.name }}</div>
                     {% endfor %}

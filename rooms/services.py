@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
-from .models import RoomCalendar
+from .models import Room, RoomCalendar
 from datetime import datetime, timedelta
+from django.db.models import Q
 
 
 def delete_booking(id, user):
@@ -65,7 +66,7 @@ class CalendarCursor:
         RoomCalendar.objects.create(
             user=user, room=room, start_daytime=start, end_daytime=end
         )
-    
+
     def replace_booking(id, user, new_start, new_end, room):
         booking = get_object_or_404(RoomCalendar, id=id, user=user)
         booking.start_daytime = new_start
@@ -73,4 +74,41 @@ class CalendarCursor:
         booking.room = room
         booking.save()
         return booking
-        
+
+
+def roomFilterGET(request):
+    sizes = request.GET.getlist("filter_sizes")
+    instruments = request.GET.getlist("filter_instrument")
+    print("Filter sizes:", sizes)
+    print("Filter instruments:", instruments)
+
+    instrument_fields = {
+        "piano": "piano",
+        "drumkit": "drum_kit",
+        "amps": ["guitar_amps", "bass_amps"],
+        "synth": "synth",
+    }
+
+    size_fields = {
+        "small": "small (3)",
+        "medium": "medium (5)",
+        "large": "large (10)",
+    }
+
+    rooms = Room.objects.all()
+
+    if sizes:
+        mapped_sizes = [size_fields[s] for s in sizes if s in size_fields]
+        rooms = rooms.filter(size_cat__in=mapped_sizes)
+
+    if instruments:
+        for instr in instruments:
+            if instr in instrument_fields:
+                fields = instrument_fields[instr]
+                if isinstance(fields, list):
+                    for f in fields:
+                        rooms = rooms.filter(**{f: "yes"})
+                else:
+                    rooms = rooms.filter(**{fields: "yes"})
+
+    return rooms

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .services import CalendarCursor
+from .services import CalendarCursor, roomFilterGET
 from .models import Room, RoomCalendar
 from django.utils import timezone
 from django.utils.dateparse import parse_date
@@ -24,9 +24,12 @@ def calendar(request):
     cursor = CalendarCursor(date, request.user)
     today = timezone.now().date()
 
+    rooms = roomFilterGET(request)
+    print(rooms, rooms.count())
+
     context = {
         "cursor": cursor,
-        "rooms": Room.objects.all(),
+        "rooms": rooms,
         "hours": range(24),
         "selected_date": date,
         "today": today,
@@ -70,10 +73,10 @@ def edit_booking_calendar(request, booking_id):
     booking = get_object_or_404(RoomCalendar, id=booking_id, user=request.user)
     cursor = CalendarCursor(date=booking.start_daytime.date(), user=request.user, ignore_booking_id=booking.id)
     today = timezone.now().date()  
-
+    rooms = roomFilterGET(request)
     context = {
         "cursor": cursor,
-        "rooms": Room.objects.all(),
+        "rooms": rooms,
         "hours": range(24),
         "selected_date": booking.start_daytime.date(),
         "today": today,

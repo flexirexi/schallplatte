@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }, 3000); 
 });
-
 export function collapseNavBar() {
     if (window.innerWidth <= 768) {
         const navbar = document.getElementById("navbarNav");

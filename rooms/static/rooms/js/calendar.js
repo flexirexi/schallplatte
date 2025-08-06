@@ -39,6 +39,37 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("dateForm").submit();
     });
 
+    
+    // bind checkboxes to the filterForm
+    const filterForm = document.getElementById("filterForm");
+    const allCheckboxes = document.querySelectorAll("input[type='checkbox'][form='filterForm']");
+    // synchronize mobile and desktop filters (I will never programm separate filters for mobile view anymore..)
+    const urlParams = new URLSearchParams(window.location.search);
+    allCheckboxes.forEach((cb) => {
+        const values = urlParams.getAll(cb.name);
+        if (values.includes(cb.value)) {
+            cb.checked = true;
+        }
+    });
+
+    allCheckboxes.forEach((cb) => {
+        cb.addEventListener("change", function () {
+            const name = cb.name;
+            const value = cb.value;
+            const checked = cb.checked;
+
+            // synchronize mobile and desktop filters..
+            document.querySelectorAll(`input[name="${name}"][value="${value}"]`).forEach((otherCb) => {
+                if (otherCb !== cb) {
+                    otherCb.checked = checked;
+                }
+            });
+
+            filterForm.submit();
+        });
+    });
+
+
     calendarUX(wrapper)
 });
 

@@ -34,7 +34,7 @@ ___
    - [User stories](#user-stories)
 - [Design](#design)
      - [Mobile First and JS](#mobile-first--js)
-     - [Wireframes](#wireframes)
+     - [Wire frames](#wireframes)
      - [Colors & Theme](#colors-and-theme)
 - [Technologies used](#technologies-used)
 - [Structure](#structure)
@@ -42,11 +42,18 @@ ___
     - [Data models](#data-models)
     - [Object models](#object-model)
 - [Features](#features)
-- [Validations](#validations)
-- [Testings](#testings)
+- [Testing](#testing)
+  - [Validations](#validations)
+    - [HTML](#html)
+    - [CSS](#css)
+    - [JS Validation](#js-validation)
+  - [User Story testing](#user-story-testing)
+  - [Automated Testing](#automated-testing)
+    - [Python](#python)
+    - [JEST](#jest)
 - [Bugs](#bugs)
 - [Heroku deployment](#heroku-deployment)
-- [credits](#credits)
+- [Credits](#credits)
    - [References](#references)
    - [Media](#media)
 - [Acknowledgments](#acknowledgement)
@@ -72,7 +79,7 @@ After these thoughts, the profile becomes clear. A music center that tackles the
 ## User stories
 Info: there is not intention of the order of the user stories
 **As a first/general user**
-- As a first user I can visit a forum page so that can get information about the latest news
+- As a first user I can visit a forum page so that I can get information about the latest news
 - As a user I can switch between dark theme and light theme so that I can visit the page with more comfort
 - As a first user I can register so that I'll be able to book rehearsal rooms
 - As a first user I can see a brief presentation about the center on an about page so that I know with whom I am dealing with
@@ -87,12 +94,9 @@ Info: there is not intention of the order of the user stories
 - As a member I can choose time slots in a calendar view so that so that I can see if rooms are available before I actually request the booking.
 - As a member I can filter rooms in the booking process by size and containing instrument so that I can find suitable rooms more efficiently
 - As a member I can log out from my profile so that others can't enter it (accidentally)
-- As a member I can delete my profile so that I am not a member of the center anymore
 - As a member I can view/edit my profile so that I have full control about my own data
+- As a member I can view/receive permanent notifications in my personal account to view the booking history.
 
-**As an admin**
-- As an admin I can delete/change/add (CRUD) bookings of others so that I rearrange the time schedule if it's necessary.
-- 
 
 # Design
 ## Mobile first & JS
@@ -188,7 +192,7 @@ Regarding the Models, there are two main models:
 
 
 ## Object Model
-Personally, this was the part with the most fun (apart from designing and creating the calendar view). The calendarcursor object is saved in the rooms/services.py file:
+Personally, this was the part with the most fun (apart from designing and creating the calendar view). The calendar cursor object is saved in the rooms/services.py file. The idea came from sql cursors that I have seen in Java and python. The concept of a current calendar-day position (in combination with it as an object) is quite useful in this app.
 
 <img src="doc/datamodels/CalendarCursorClass_pt1.png" width="400px">
 <img src="doc/datamodels/CalendarCursorClass_p2.png" width="400px">
@@ -208,8 +212,9 @@ Personally, this was the part with the most fun (apart from designing and creati
 - auto-fade confirmations
 
 
-# Validations
-## HTML
+# Testing
+## Validations
+### HTML
 <details>
   <summary>NO ERRORS</summary>
   <img src="doc/validation/html/about.png" width="300px">
@@ -223,7 +228,7 @@ Personally, this was the part with the most fun (apart from designing and creati
   <img src="doc/validation/html/rooms.png" width="300px">
 </details>
 
-## CSS
+### CSS
 <details>
   <summary>NO ERRORS</summary>
   <img src="doc/validation/css/global_layout.png" width="300px">
@@ -241,7 +246,7 @@ Personally, this was the part with the most fun (apart from designing and creati
 
 </details>
 
-## JS
+### JS Validation
 Important: 
 - while checking the calendar.js, JSHint is no longer up to date -> I switched to ESHint. 
 - What I did: for the variables <code> document </code>, <code> window </code> and <code> bootstrap</code>, I declared them as global as you can see in the screenshots. Since they are no fails. JS knows these variables well.
@@ -257,6 +262,87 @@ Important:
 </details>
 
 
+## User Story Testing
+
+<h4 style="color: yellow;">As a first user</h4>
+
+### Test 1
+
+<details>
+<summary>I can visit a forum page so that I can get information about the latest news</summary>
+<img src="doc/img/manual_testing/us_01.png" width="450px">
+</details>
+
+|Feature|Action|Expected Result|Actual Result|
+|-------|------|--|--|
+|Forum page|Visit `/forum/`|Forum loads with latest news or discussions visible|Works as expected|
+<br>
+
+
+### Test 2
+<details>
+<summary>I can switch between dark theme and light theme so that I can visit the page with more comfort</summary>
+<img src="doc/img/manual_testing/us_02_1.png" width="450px">
+<img src="doc/img/manual_testing/us_02_2.png" width="450px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Theme Switcher | Toggle theme via icon or UI switch element  | Page changes theme between dark and light instantly | Works as expected   |
+<br>
+
+
+### Test 3
+<details>
+<summary>I can register so that I'll be able to book rehearsal rooms</summary>
+<img src="doc/img/manual_testing/us_03_1.png" width="550px">
+<img src="doc/img/manual_testing/us_03_2.png" width="550px">
+<img src="doc/img/manual_testing/us_03_3.png" width="550px">
+<img src="doc/img/manual_testing/us_03_4.png" width="550px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Registration   | Fill out and submit the registration form | User account is created, redirected and confirmed by a toast| Works as expected |
+<br>
+
+
+
+
+### Test 4
+<details>
+<summary>I can see a brief presentation about the center on an about page so that I know with whom I am dealing with</summary>
+<img src="doc/img/manual_testing/us_04_1.png" width="600px">
+<img src="doc/img/manual_testing/us_04_2.png" width="600px">
+<img src="doc/img/manual_testing/us_04_3.png" width="600px">
+<img src="doc/img/manual_testing/us_04_4.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| About Page  | Visit `/about/`     | Clear and informative description of the center is displayed  | Works as expected |
+<br>
+
+
+
+### Test 5
+<details>
+<summary>I can see pictures of the rehearsal rooms so that I can decide which room fits the best for my purpose</summary>
+<img src="doc/img/manual_testing/us_05_1.png" width="600px">
+<img src="doc/img/manual_testing/us_05_2.png" width="600px">
+<img src="doc/img/manual_testing/us_05_3.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Room Gallery | Navigate to/Visit `/rooms/` | Pictures of all rehearsal rooms are visible and informative  | Works as expected |
+<br>
+
+
+
+
+
+## Automated Testing
 ## Python
 While using black pycodestyle to auto format, there are some infos and warnings. To, me they seem harmless..  
 <details>
@@ -264,10 +350,7 @@ While using black pycodestyle to auto format, there are some infos and warnings.
   <img src="doc/validation/py/pep8.png" width="300px">
 </details>
 
-
-# Testings
-Testings have been performed conineously and with quite effort (testing on windows laptop, iphone, android phone, ipad)
-However I didnt perform automated tests due to time constraints.
+## JEST
 
 # Bugs
 

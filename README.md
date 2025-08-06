@@ -12,7 +12,7 @@ Github: [Link](https://github.com/flexirexi/schallplatte)
 
 
  **Currently existing user account with multiple bookings**
- - U: w.heisenberg P: quantum2025 
+ - U: w.heisenberg P: quantum1925 
  - U: e.schroedinger P: cats1935
 
  Of course you can also register and test it that way.
@@ -336,6 +336,70 @@ Important:
 | Feature        | Action   | Expected Result | Actual Result  |
 |----------------|-----------------------|--------------------|---------------------|
 | Room Gallery | Navigate to/Visit `/rooms/` | Pictures of all rehearsal rooms are visible and informative  | Works as expected |
+<br>
+
+
+### Test 6
+<details>
+<summary>I can visit the landing page so that I get to know what the music center "Schallplatte" is about</summary>
+<img src="doc/img/manual_testing/us_06_1.png" width="600px">
+<img src="doc/img/manual_testing/us_06_2.png" width="600px">
+<img src="doc/img/manual_testing/us_06_3.png" width="600px">
+<img src="doc/img/manual_testing/us_06_4.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Landing Page   | Visit `/`        | Intro section explains the purpose and vibe of "Schallplatte"    | Works as expected |
+<br>
+
+
+### Test 7
+<details>
+<summary>I can log in so that I can book rehearsal rooms</summary>
+<img src="doc/img/manual_testing/us_07_1.png" width="600px">
+<img src="doc/img/manual_testing/us_07_2.png" width="600px">
+<img src="doc/img/manual_testing/us_07_3.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Login       | Submit login form when visiting `/`        | User is authenticated and redirected to the personal profile + success toast is shown| Works as expected |
+<br>
+
+
+
+### Test 8
+<details>
+<summary>I can successfully book a rehearsal room so that I can enter it an practice music</summary>
+<img src="doc/img/manual_testing/us_08_1.png" width="600px">
+<img src="doc/img/manual_testing/us_08_2.png" width="600px">
+<img src="doc/img/manual_testing/us_08_3.png" width="600px">
+<img src="doc/img/manual_testing/us_08_4.png" width="600px">
+<img src="doc/img/manual_testing/us_08_5.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Booking System     | visit `/rooms/calendar/` by clicking on "book" in the profile page or rooms-page: Select time slot and submit booking   | Booking is saved and visible in the profile page + success toast is shown | Works as expected|
+<br>
+
+
+
+
+### Test 9
+<details>
+<summary>I can modify existing bookings so that it fits into my personal time schedule</summary>
+<img src="doc/img/manual_testing/us_08_1.png" width="600px">
+<img src="doc/img/manual_testing/us_08_2.png" width="600px">
+<img src="doc/img/manual_testing/us_08_3.png" width="600px">
+<img src="doc/img/manual_testing/us_08_4.png" width="600px">
+<img src="doc/img/manual_testing/us_08_5.png" width="600px">
+</details>
+
+| Feature        | Action   | Expected Result | Actual Result  |
+|----------------|-----------------------|--------------------|---------------------|
+| Booking System     | visit `/rooms/calendar/` by clicking on "book" in the profile page or rooms-page: Select time slot and submit booking   | Booking is saved and visible in the profile page + success toast is shown | Works as expected|
 <br>
 
 

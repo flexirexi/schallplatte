@@ -390,11 +390,7 @@ Important:
 ### Test 9
 <details>
 <summary>I can modify existing bookings so that it fits into my personal time schedule</summary>
-<img src="doc/img/manual_testing/us_08_1.png" width="600px">
-<img src="doc/img/manual_testing/us_08_2.png" width="600px">
-<img src="doc/img/manual_testing/us_08_3.png" width="600px">
-<img src="doc/img/manual_testing/us_08_4.png" width="600px">
-<img src="doc/img/manual_testing/us_08_5.png" width="600px">
+<img src="doc/img/manual_testing/us_.png" width="600px">
 </details>
 
 | Feature        | Action   | Expected Result | Actual Result  |

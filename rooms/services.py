@@ -10,7 +10,7 @@ def delete_booking(id, user):
 
 
 class CalendarCursor:
-    def __init__(self, date: datetime.date, user):
+    def __init__(self, date: datetime.date, user, ignore_booking_id=None):
         self.date = date
         self.user = user
         self.selected_keys = []
@@ -18,6 +18,10 @@ class CalendarCursor:
         self.all_bookings = RoomCalendar.objects.filter(
             start_daytime__date=self.date
         ).select_related("room", "user")
+
+        if ignore_booking_id:
+            self.all_bookings = self.all_bookings.exclude(id=ignore_booking_id)
+
         self.user_bookings = [b for b in self.all_bookings if b.user == self.user]
         self.non_user_bookings = [b for b in self.all_bookings if b.user != self.user]
 
@@ -61,3 +65,12 @@ class CalendarCursor:
         RoomCalendar.objects.create(
             user=user, room=room, start_daytime=start, end_daytime=end
         )
+    
+    def replace_booking(id, user, new_start, new_end, room):
+        booking = get_object_or_404(RoomCalendar, id=id, user=user)
+        booking.start_daytime = new_start
+        booking.end_daytime = new_end
+        booking.room = room
+        booking.save()
+        return booking
+        

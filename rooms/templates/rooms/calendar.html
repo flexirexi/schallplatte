@@ -180,8 +180,17 @@
                 </div>
             
                 {{ form.user|attr:"id:id_user_mobile" }} {# hidden input #}
-            
-                <button type="submit" class="btn btn-primary mt-3 w-100" id="booking-submit">Confirm</button>
+                {% if edit_booking %}
+                    <!-- Edit-Modus: Button calls Fetch auf -->
+                    <button type="button" class="btn btn-warning w-100 mt-2" id="booking-submit">
+                        Save changes
+                    </button>
+                {% else %}
+                    <button type="submit" class="btn btn-primary w-100 mt-2" id="booking-submit">
+                        Confirm
+                    </button>
+                {% endif %}
+                
                 {% if form.errors %}
                 <div class="alert alert-danger">
                     <ul>
@@ -230,6 +239,16 @@
                     
                         {{ form.user }} {# hidden input #}
                         <div class="px-4">
+                            {% if edit_booking %}
+                                <!-- Edit-Modus: Button calls Fetch auf -->
+                                <button type="button" class="btn btn-warning w-100 mt-2" id="booking-submit-mobile">
+                                    Save changes
+                                </button>
+                            {% else %}
+                                <button type="submit" class="btn btn-primary w-100 mt-2" id="booking-submit-mobile">
+                                    Confirm
+                                </button>
+                            {% endif %}
                             <button type="submit" class="btn btn-primary mt-2 w-100 me-3" id="booking-submit-mobile">Confirm</button>
                         </div>    
                         {% if form.errors %}
@@ -258,5 +277,13 @@
 <!-- calendar content ends here --------------------------------------------------------------->
     
 <!-- calendar.js script -->
+{% if edit_booking %}
+    <script>
+        window.editBookingId = {{ edit_booking.id }};
+        window.editBookingStart = "{{ edit_booking.start_daytime|date:'H:i' }}";
+        window.editBookingEnd = "{{ edit_booking.end_daytime|date:'H:i' }}";
+        window.editBookingRoom = "{{ edit_booking.room.id  }}";
+    </script>
+{% endif %}
 <script type="module" src="{% static 'rooms/js/calendar.js' %}"></script>
 {% endblock %}

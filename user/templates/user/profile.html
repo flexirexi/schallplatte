@@ -76,7 +76,7 @@
        {% for booking in bookings %}
        <!-- Booking item -->
 
-         
+
           <div class="card p-4 booking-item">
             <div class="mobile_card_switcher">
               <div class="date_card text-center col-1">
@@ -94,7 +94,7 @@
               </div>
               
               <div class="mobile_card_switcher_reverse">
-                <button class="btn ms-auto ms-md-0 p-1 fs-6 me-4">modify</button>
+                <a href="{% url 'rooms:edit_booking_calendar' booking.id %}" class="btn ms-auto ms-md-0 p-1 fs-6 me-4">modify</a>
                 <button type="button" class="btn ms-5 ms-md-0 bg-danger border-none me-4 mt-3"
                   data-bs-toggle="modal" data-bs-target="#confirmModal-{{ booking.id }}">
                   Cancel 

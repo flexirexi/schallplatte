@@ -8,6 +8,8 @@ import {
     formatEnd
 } from "./calendar-utils.js";
 
+// Custom Calendar-UX functions
+// Esp. for blocking, marking the cells in the grid
 // The heavy stuff - selecting time slots in the calendar interface
 export function calendarUX(wrapper) {
     let isSelecting = false;
@@ -18,7 +20,8 @@ export function calendarUX(wrapper) {
 
     document.querySelectorAll(".calendar-cell").forEach(cell => {
         cell.addEventListener("mousedown", () => {
-            removeHighlights();   
+            // checks if the mousedown-event trigger blocks the selected cell or not
+            removeHighlights();
             isSelecting = true;
             const hour = parseInt(cell.dataset.hour);
             const half = parseInt(cell.dataset.half);
@@ -27,14 +30,15 @@ export function calendarUX(wrapper) {
             selectedSlots.clear();
             highlightCell(cell);
             const blocked = cell.dataset.blocked;
-            if (blocked=="true") {
+            if (blocked == "true") {
                 booking_blocked();
             } else {
                 booking_not_blocked();
             }
         });
-    
+
         cell.addEventListener("mouseenter", () => {
+            // checks whether to block the new maked cell
             if (isSelecting && cell.dataset.room === selectedRoom) {
                 const hour = parseInt(cell.dataset.hour);
                 const half = parseInt(cell.dataset.half);
@@ -43,9 +47,9 @@ export function calendarUX(wrapper) {
 
                 const from = Math.min(selectionStartValue, currentValue);
                 const to = Math.max(selectionStartValue, currentValue);
-                if (blocked=="true") {
+                if (blocked == "true") {
                     booking_blocked();
-                } 
+                }
 
                 document.querySelectorAll(`.calendar-cell[data-room="${selectedRoom}"]`).forEach(c => {
                     const h = parseInt(c.dataset.hour);
@@ -54,7 +58,7 @@ export function calendarUX(wrapper) {
 
                     if (val >= from && val <= to) {
                         highlightCell(c);
-                        
+
                     } else {
                         c.classList.remove("selected-slot");
                     }
@@ -70,7 +74,7 @@ export function calendarUX(wrapper) {
                 const dynamicEnd = Math.max(selectionStartValue, currentValue);
                 startInput.value = formatStart(dynamicStart);
                 endInput.value = formatEnd(dynamicEnd);
-                roomSelect.value = selectedRoom; 
+                roomSelect.value = selectedRoom;
                 roomSelectFake.value = selectedRoom;
 
 
@@ -81,9 +85,9 @@ export function calendarUX(wrapper) {
                 const roomSelectFakeMobile = document.getElementById("id_room_fake-mobile");
                 startInputMobile.value = formatStart(dynamicStart);
                 endInputMobile.value = formatEnd(dynamicEnd);
-                roomSelectMobile.value = selectedRoom; 
+                roomSelectMobile.value = selectedRoom;
                 roomSelectFakeMobile.value = selectedRoom;
-                
+
 
                 // clear
                 selectedSlots.clear();
@@ -94,7 +98,7 @@ export function calendarUX(wrapper) {
                 }
             }
         });
-    
+
         cell.addEventListener("mouseup", () => {
             isSelecting = false;
             selectedRoom = null;
@@ -117,7 +121,7 @@ export function calendarUX(wrapper) {
 
             if (!touchSelectionStart) {
                 // first touch: remember start
-                touchSelectionStart = {value: currentValue, room};
+                touchSelectionStart = { value: currentValue, room };
                 removeHighlights();
                 highlightCell(cell);
                 booking_blocked_on_first_touch();
@@ -137,7 +141,6 @@ export function calendarUX(wrapper) {
                         highlightCell(c);
                     }
                 });
-
                 updateForms(from, to, room);
                 touchSelectionStart = null;
             } else {
@@ -145,8 +148,8 @@ export function calendarUX(wrapper) {
                 removeHighlights();
             }
         });
-    }); 
-    
+    });
+
     document.addEventListener("mouseup", () => {
         isSelecting = false;
     });

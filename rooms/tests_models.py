@@ -9,6 +9,7 @@ from django.utils import timezone
 # Create your tests here.
 @pytest.mark.django_db
 def test_room_str():
+    // basic tests 
     room = Room.objects.create(
         name="Studio A",
         size_cat="25qm",

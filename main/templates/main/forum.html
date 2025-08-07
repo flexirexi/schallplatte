@@ -2,43 +2,40 @@
 {% load static %}
 
 {% block extra_css %}
-  <link rel="stylesheet" href="{% static 'main/css/forum.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/forum.css' %}">
 {% endblock %}
 
-
 {% block content %}
-<!-- index.html content starts here -->
-
 <main class="container">
   <div class="hero">
     <div class="hero-image">
-        <img src="{% static 'img/free/schallplatte17.jpg' %}" class="slide" alt="hero section  image: big rehearsal room">
+      <img src="{% static 'img/free/schallplatte17.jpg' %}" class="slide" alt="hero section  image: big rehearsal room">
     </div>
     <div class="hero-text">
-        <h1>Forum announced!</h1>
+      <h1>Forum announced!</h1>
     </div>
   </div>
 
   <section class="forum_section mb-4">
     <div class="row g-5">
       <div class="col-12 col-md-6 ">
-          <p><strong>
-            We're always thinking about how to strengthen the sense of community within SCHALLPLATTE. 
+        <p><strong>
+            We're always thinking about how to strengthen the sense of community within SCHALLPLATTE.
             And what's a must-have for that? Exactly - an online forum!
           </strong></p>
-          <br>
-          <p>
-            A place where musicians - yes, that includes <em>you</em> - can ask questions and share insights on 
-            everything from music and gigs to gear, events, and more. Just a space to connect and exchange ideas.
-            <br><br>
-            Get ready - it's coming soon!
-          </p>
-        </div>
-        <div class="col-12 col-md-6 " >
-          <img src="{% static 'img/free/schallplatte19.png' %}" alt="photo of a building with the label FORUM" class="mx-auto d-block">
-        </div>
+        <br>
+        <p>
+          A place where musicians - yes, that includes <em>you</em> - can ask questions and share insights on
+          everything from music and gigs to gear, events, and more. Just a space to connect and exchange ideas.
+          <br><br>
+          Get ready - it's coming soon!
+        </p>
+      </div>
+      <div class="col-12 col-md-6 ">
+        <img src="{% static 'img/free/schallplatte19.png' %}" alt="photo of a building with the label FORUM"
+          class="mx-auto d-block">
+      </div>
     </div>
   </section>
 </main>
-<!-- index.html content ends here -->
 {% endblock %}

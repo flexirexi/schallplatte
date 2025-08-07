@@ -1,223 +1,249 @@
-{% extends "main/base.html" %}
-{% load static %}
-
-{% block extra_css %}
-  <link rel="stylesheet" href="{% static 'main/css/rooms.css' %}">
-{% endblock %}
-
-
-{% block content %}
+{% extends "main/base.html" %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/rooms.css' %}" />
+{% endblock %} {% block content %}
 <!-- index.html content starts here ------------------------------------------->
- <main class="container">
-    <!-- LARGE ROOM SECTION ----------------------------->
-    <section class="rooms_section mb-3">
-        <h2>2 Large Rooms</h2>
-        <h6 class="mb-4">for big bands</h6>
-        <div class="row g-5">
-            <div class="col-12 col-md-6 ">
-              <div id="carouselLargeRoomCaptions" class="carousel slide">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselLargeRoomCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselLargeRoomCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="{% static 'img/istock/istock01.jpg' %}" alt="First Room with big windows">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Large Room 1 with large windows</h5>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{% static 'img/istock/istock02.jpg' %}" alt="Second Room">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Second Room for up to 10 people</h5>
-                    </div>
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselLargeRoomCaptions" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselLargeRoomCaptions" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
+<main class="container">
+  <!-- LARGE ROOM SECTION ----------------------------->
+  <section class="rooms_section mb-3">
+    <h2>2 Large Rooms</h2>
+    <h6 class="mb-4">for big bands</h6>
+    <div class="row g-5">
+      <div class="col-12 col-md-6">
+        <div id="carouselLargeRoomCaptions" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselLargeRoomCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselLargeRoomCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="{% static 'img/istock/istock01.jpg' %}"
+                alt="First Room with big windows" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Large Room 1 with large windows</h5>
               </div>
             </div>
-            <div class="col-12 col-md-6">
-                <p><span class="fs-2"><strong>40€ </strong></span> <span> per hour/room</span></p>
-                <ul>
-                  <li>pay cash at the center</li>
-                  <li>2 Rooms</li>
-                  <li>up to 10 people</li>
-                  <li>4 AMPs</li>
-                  <li>2 Synthesizers</li>
-                  <li>1 drum kit</li>
-                </ul>
-                <p>
-                    Long description of the rooms. List here what they have. Both rooms are for up to 10 people. Ideal for a 
-                    dress rehearsal. Surely, you can use and install your own equipment - just consider that you book enough 
-                    time for the setup. Each room can be equipped with 2 synthezisers, one drum kit, several amps, microphones
-                    and other instruments. Please note to only consume your drinks in the marked areas.
-                </p>
-            </div>
-        </div>
-        {% if user.is_authenticated %}
-        <a href="{% url 'rooms:calendar' %}" class="btn btn-primary mt-5">Book now</a>
-        {% else %}
-        <a href="{% url 'account_login' %}" 
-            class="btn btn-outline-light nav-contact-btn mt-5 {% if request.path == login_url %}active{% endif %}" >Login!</a>
-        {% endif %}
-      </section>
-      <hr>
-
-      <!-- MEDIUM ROOM SECTION ----------------------------------->
-      <section class="rooms_section mb-3">
-        <h2>4 Medium sized Rooms</h2>
-        <h6 class="mb-4">the classic</h6>
-        <div class="row g-5">
-            <div class="col-12 col-md-6 ">
-              <div id="carouselMediumRoomCaptions" class="carousel slide">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                  <button type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="{% static 'img/free/schallplatte02.jpg' %}" alt="image of a white medium room">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>one of our white rooms</h5>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{% static 'img/free/schallplatte03.jpg' %}" alt="image of another white medium room">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>another white pearl in our music center</h5>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{% static 'img/free/schallplatte04.jpg' %}" alt="image of another medium room">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>only space for music</h5>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{% static 'img/free/schallplatte16.jpg' %}" alt="image of medium room with a piano">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>practice you piano skills with the band</h5>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{% static 'img/free/schallplatte13.jpg' %}" alt="image of another medium room">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>one of our classics</h5>
-                    </div>
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{% static 'img/istock/istock02.jpg' %}" alt="Second Room" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Second Room for up to 10 people</h5>
               </div>
             </div>
-            <div class="col-12 col-md-6">
-                <p><span class="fs-2 bold">25€ </span> <span> per hour/room</span></p>
-                <ul>
-                  <li>pay cash at the center</li>
-                  <li>4 Rooms</li>
-                  <li>up to 5 people per room</li>
-                  <li>All Rooms: 2 AMPs</li>
-                  <li>1 Room: a grand piano (!)</li>
-                  <li>2 Rooms: 1 Synthesizers</li>
-                  <li>All Rooms: 1 drum kit</li>
-                </ul>
-                <p>
-                    Long description of the rooms. List here what they have. All 4 rooms can host up to 5 people. Ideal for a 
-                    for the classic band. Surely, you can use and install your own equipment - just consider that you book enough 
-                    time for the setup. Each room is equipped with a drum kit, 2 AMPs and microphones. 2 Rooms of which have a 
-                    drum kit, are equipped with a syntheziser. One Rooms has a grand piano. We kindly ask you to be careful with
-                    consuming your drinks. Breaking the equipment negligently will cause you to pay.
-                </p>
-            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselLargeRoomCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselLargeRoomCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-        {% if user.is_authenticated %}
-        <a href="{% url 'rooms:calendar' %}" class="btn btn-primary mt-5">Book now</a>
-        {% else %}
-        <a href="{% url 'account_login' %}" 
-            class="btn btn-outline-light nav-contact-btn mt-5 {% if request.path == login_url %}active{% endif %}" >Login!</a>
-        {% endif %}
-      </section>
-      <hr>
+      </div>
+      <div class="col-12 col-md-6">
+        <p>
+          <span class="fs-2"><strong>40€ </strong></span>
+          <span> per hour/room</span>
+        </p>
+        <ul>
+          <li>pay cash at the center</li>
+          <li>2 Rooms</li>
+          <li>up to 10 people</li>
+          <li>4 AMPs</li>
+          <li>2 Synthesizers</li>
+          <li>1 drum kit</li>
+        </ul>
+        <p>
+          Long description of the rooms. List here what they have. Both rooms
+          are for up to 10 people. Ideal for a dress rehearsal. Surely, you can
+          use and install your own equipment - just consider that you book
+          enough time for the setup. Each room can be equipped with 2
+          synthezisers, one drum kit, several amps, microphones and other
+          instruments. Please note to only consume your drinks in the marked
+          areas.
+        </p>
+      </div>
+    </div>
+    {% if user.is_authenticated %}
+    <a href="{% url 'rooms:calendar' %}" class="btn btn-primary mt-5">Book now</a>
+    {% else %}
+    <a href="{% url 'account_login' %}"
+      class="btn btn-outline-light nav-contact-btn mt-5 {% if request.path == login_url %}active{% endif %}">Login!</a>
+    {% endif %}
+  </section>
+  <hr />
 
-      <!-- SMALL ROOM SECTION --------------------------------->
-      <section class="rooms_section mb-4">
-        <h2>Small Rooms</h2>
-        <h6 class="mb-4">the brain cells</h6>
-        <div class="row g-5">
-            <div class="col-12 col-md-6 ">
-              <div id="carouselSmallRoomCaptions" class="carousel slide">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselSmallRoomCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselSmallRoomCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselSmallRoomCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="{% static 'img/free/schallplatte14.jpg' %}" alt="small cozy rehearsal room">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>small cozy room for creative minds</h5>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{% static 'img/free/schallplatte15.jpg' %}" alt="Second small room">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>second small room</h5>
-                    </div>
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselSmallRoomCaptions" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselSmallRoomCaptions" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
+  <!-- MEDIUM ROOM SECTION ----------------------------------->
+  <section class="rooms_section mb-3">
+    <h2>4 Medium sized Rooms</h2>
+    <h6 class="mb-4">the classic</h6>
+    <div class="row g-5">
+      <div class="col-12 col-md-6">
+        <div id="carouselMediumRoomCaptions" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide-to="3"
+              aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselMediumRoomCaptions" data-bs-slide-to="4"
+              aria-label="Slide 5"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="{% static 'img/free/schallplatte02.jpg' %}"
+                alt="image of a white medium room" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>one of our white rooms</h5>
               </div>
             </div>
-            <div class="col-12 col-md-6">
-                <p><span class="fs-2 bold">18€ </span> <span> per hour/room</span></p>
-                <ul>
-                  <li>pay cash at the center</li>
-                  <li>2 Rooms</li>
-                  <li>up to 3 people per room</li>
-                  <li>All Rooms: 1 AMPs</li>
-                  <li>2 Rooms: 1 Synthesizers</li>
-                  <li>1 Room: piano</li>
-                  <li>All Rooms: 1 drum kit</li>
-                </ul>
-                <p>
-                    Long description of the rooms. List here what they have. Both rooms are for up to 3 people. Ideal for a 
-                    practice and creative minds. Please be careful when consuming drinks. The piano room can even be used for 
-                    piano lessons (of course, any kind of instrument can be practiced here).
-                </p>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{% static 'img/free/schallplatte03.jpg' %}"
+                alt="image of another white medium room" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>another white pearl in our music center</h5>
+              </div>
             </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{% static 'img/free/schallplatte04.jpg' %}"
+                alt="image of another medium room" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>only space for music</h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{% static 'img/free/schallplatte16.jpg' %}"
+                alt="image of medium room with a piano" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>practice you piano skills with the band</h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{% static 'img/free/schallplatte13.jpg' %}"
+                alt="image of another medium room" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>one of our classics</h5>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselMediumRoomCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselMediumRoomCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-        {% if user.is_authenticated %}
-        <a href="{% url 'rooms:calendar' %}" class="btn btn-primary mt-5">Book now</a>
-        {% else %}
-        <a href="{% url 'account_login' %}" 
-            class="btn btn-outline-light nav-contact-btn mt-5 {% if request.path == login_url %}active{% endif %}" >Login!</a>
-        {% endif %}
-      </section>
+      </div>
+      <div class="col-12 col-md-6">
+        <p><span class="fs-2 bold">25€ </span> <span> per hour/room</span></p>
+        <ul>
+          <li>pay cash at the center</li>
+          <li>4 Rooms</li>
+          <li>up to 5 people per room</li>
+          <li>All Rooms: 2 AMPs</li>
+          <li>1 Room: a grand piano (!)</li>
+          <li>2 Rooms: 1 Synthesizers</li>
+          <li>All Rooms: 1 drum kit</li>
+        </ul>
+        <p>
+          Long description of the rooms. List here what they have. All 4 rooms
+          can host up to 5 people. Ideal for a for the classic band. Surely, you
+          can use and install your own equipment - just consider that you book
+          enough time for the setup. Each room is equipped with a drum kit, 2
+          AMPs and microphones. 2 Rooms of which have a drum kit, are equipped
+          with a syntheziser. One Rooms has a grand piano. We kindly ask you to
+          be careful with consuming your drinks. Breaking the equipment
+          negligently will cause you to pay.
+        </p>
+      </div>
+    </div>
+    {% if user.is_authenticated %}
+    <a href="{% url 'rooms:calendar' %}" class="btn btn-primary mt-5">Book now</a>
+    {% else %}
+    <a href="{% url 'account_login' %}"
+      class="btn btn-outline-light nav-contact-btn mt-5 {% if request.path == login_url %}active{% endif %}">Login!</a>
+    {% endif %}
+  </section>
+  <hr />
 
- </main>
-<!-- index.html content ends here -->
+  <!-- SMALL ROOM SECTION --------------------------------->
+  <section class="rooms_section mb-4">
+    <h2>Small Rooms</h2>
+    <h6 class="mb-4">the brain cells</h6>
+    <div class="row g-5">
+      <div class="col-12 col-md-6">
+        <div id="carouselSmallRoomCaptions" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselSmallRoomCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselSmallRoomCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselSmallRoomCaptions" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="{% static 'img/free/schallplatte14.jpg' %}"
+                alt="small cozy rehearsal room" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>small cozy room for creative minds</h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{% static 'img/free/schallplatte15.jpg' %}" alt="Second small room" />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>second small room</h5>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselSmallRoomCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselSmallRoomCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <p><span class="fs-2 bold">18€ </span> <span> per hour/room</span></p>
+        <ul>
+          <li>pay cash at the center</li>
+          <li>2 Rooms</li>
+          <li>up to 3 people per room</li>
+          <li>All Rooms: 1 AMPs</li>
+          <li>2 Rooms: 1 Synthesizers</li>
+          <li>1 Room: piano</li>
+          <li>All Rooms: 1 drum kit</li>
+        </ul>
+        <p>
+          Long description of the rooms. List here what they have. Both rooms
+          are for up to 3 people. Ideal for a practice and creative minds.
+          Please be careful when consuming drinks. The piano room can even be
+          used for piano lessons (of course, any kind of instrument can be
+          practiced here).
+        </p>
+      </div>
+    </div>
+    {% if user.is_authenticated %}
+    <a href="{% url 'rooms:calendar' %}" class="btn btn-primary mt-5">Book now</a>
+    {% else %}
+    <a href="{% url 'account_login' %}"
+      class="btn btn-outline-light nav-contact-btn mt-5 {% if request.path == login_url %}active{% endif %}">Login!</a>
+    {% endif %}
+  </section>
+</main>
 {% endblock %}

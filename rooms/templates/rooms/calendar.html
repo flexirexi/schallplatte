@@ -5,6 +5,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'rooms/css/calendar.css' %}">
+<style>:root { --rooms-count: {{ rooms.count }};}</style>
 {% endblock %}
 
 
@@ -118,9 +119,9 @@
             <div class="calendar-wrapper" id="calendar-wrapper">
                 <div class="calendar-grid">
                     <!-- First row: header -->
-                    <div class="calendar-time time-label"></div> <!-- leere Ecke -->
+                    <div class="calendar-time time-label"></div> <!-- empty corner -->
                     
-                    <style>:root { --rooms-count: {{ rooms.count }};}</style>
+                    <!-- <style>:root { --rooms-count: {{ rooms.count }};}</style> -->
                     
                     {% for room in rooms %}
                         <div class="calendar-header">{{ room.name }}</div>

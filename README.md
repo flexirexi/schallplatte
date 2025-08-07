@@ -519,6 +519,7 @@ Important:
   <img src="doc/img/automated_testing/pytest_01.png" width="750px">
 </details>
 <b>What was tested:</b>
+
 - `Room.__str__()` returns the correct string format (`"{id}: {name}"`)
 - `RoomCalendar.__str__()` outputs expected booking details including user and time range
 - Deleting a `Room` also removes related entries in ``RoomCalendar
@@ -532,6 +533,7 @@ Important:
   <img src="doc/img/automated_testing/pytest_02.png" width="750px">
 </details>
 <b>What was tested:</b>
+
 - `test_get_cell_key()` simply tests if the correct cell key is being generated (pure calculation, no mock)
 - `test_cell_keys_for_booking()` tests for both relevant half-hour keys to verify correct mapping of booking time ranges (calculation based on a real booking instance) 
 - `test_user_and_all_cell_keys()`: test `user_cell_keys` vs. `all_cell_keys`: to check that only the current user's keys are filtered correctly (functionality, real DB entries)
@@ -544,6 +546,13 @@ Important:
   <br>
   <img src="doc/img/automated_testing/pytest_03.png" width="750px">
 </details>
+<b>What was tested:</b>
+
+- `test_calendar_view_authenticate()` checks that a logged-in user receives a valid response and context from the calendar view.
+  - functional test with real user login: Ensures that templates, forms and data objects are rendered correctly
+- `test_booking_success()` verifies that a booking can be created through the view when all data is valid.
+  - confirms successful DB entry and message
+- `test_booking_invalid()` simply verifies if the function returns an error message on invalid input data (`"start:": ""`, `"end": ""`, `"room": ""`)
 <br><br>
 
 ## JEST
@@ -553,6 +562,12 @@ Important:
   <br>
   <img src="doc/img/automated_testing/npm_test_01.png" width="750px">
 </details>
+<b>What was tested:</b>
+
+- `collapseNavBar()` basically tests 3 scenarios: 
+- collapse the navbar when `window.innerWidth <= 768` (tested via `Calls .hide()` to confirm correct conditional logic)
+- don't collapse the navbar when `window.innerWidth > 768` and
+- don't misbehave when the DOM element is missing
 <br><br>
 
 <details open>
@@ -565,6 +580,16 @@ Important:
 - calendar.js was too complex to be tested by JEST, so, I excluded UX and UTILS and created 3 js-files
 - also the continuous testing of these 3 files is crucial when doing further developments
 - for that, also the most basic functions are tested for their outcome
+
+<b>What was tested:</b>
+
+- `highlightCell()` adds the class `selected-slot` to verify if the cell marking was applied correctly
+- `removeHighlights()` removes `selected-slot` from all `.calendar-cell`-elements. All selections are properly cleared before new ones are added
+- `booking_blocked()` when a collision is detected it must disable both desktop and mobile booking buttons and shows a conflict message.
+- `booking_blocked_on_first_touch()` displays a message when user only select a single time slot. this feature helps the user to understand what the current selection state is of the calendar tool
+- `formatStart(slotId)` returns a correctly formatted timestamp from the date picker
+- `formatEnd(slotId)` returns a timestamp 30 minutes later. Only with both `formatStart` and `formatEnd` the feature of converting time into start and end slots can be verified
+- `updateForms(from, to, roomId)` sets all form values correctly (both desktop and mobile) to ensure that the selected values are passed to the form elements used for the submission
   <br><br>
 
 # Bugs

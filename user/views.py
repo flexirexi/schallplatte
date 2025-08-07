@@ -33,7 +33,12 @@ def profile_edit(request):
     profile, created = Profile.objects.get_or_create(user=user)
 
     if request.method == "POST":
-        form = EditProfileForm(request.POST, request.FILES, instance=profile, user=user)
+        form = EditProfileForm(
+            request.POST,
+            request.FILES,
+            instance=profile,
+            user=user
+        )
         if form.is_valid():
             form.save()
             return redirect("user:profile")
@@ -53,5 +58,8 @@ def booking_delete_view(request, id):
         if success:
             messages.success(request, "Booking cancellation SUCCESSFUL.")
         else:
-            messages.error(request, "Booking cancellation FAILED. Please try again.")
+            messages.error(
+                request,
+                "Booking cancellation FAILED. Please try again."
+            )
     return redirect("user:profile")

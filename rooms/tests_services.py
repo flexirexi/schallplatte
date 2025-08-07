@@ -2,7 +2,7 @@ import pytest
 from .models import Room, RoomCalendar
 from .services import CalendarCursor
 from django.contrib.auth.models import User
-from django.utils import timezone 
+from django.utils import timezone
 from datetime import timedelta
 
 
@@ -30,8 +30,8 @@ def test_get_cell_keys_for_booking():
     end = start + timedelta(hours=1)
 
     booking = RoomCalendar.objects.create(
-        user=user, room=room, 
-        start_daytime=start, 
+        user=user, room=room,
+        start_daytime=start,
         end_daytime=end
     )
     cc = CalendarCursor(start.date(), user)
@@ -61,8 +61,12 @@ def test_user_and_all_cell_keys():
     start = timezone.now().replace(hour=8, minute=0)
     end = start + timedelta(hours=1)
 
-    RoomCalendar.objects.create(user=user1, room=room, start_daytime=start, end_daytime=end)
-    RoomCalendar.objects.create(user=user2, room=room, start_daytime=start + timedelta(hours=2), end_daytime=end + timedelta(hours=2))
+    RoomCalendar.objects.create(
+        user=user1, room=room, start_daytime=start, end_daytime=end)
+    RoomCalendar.objects.create(user=user2,
+                                room=room,
+                                start_daytime=start + timedelta(hours=2),
+                                end_daytime=end + timedelta(hours=2))
 
     cc = CalendarCursor(start.date(), user1)
     u_keys = cc.user_cell_keys
@@ -98,12 +102,12 @@ def test_save_booking_success():
 def test_save_booking_conflict_raises():
     user = User.objects.create_user(username="booker")
     room = Room.objects.create(
-        name="X", 
-        size_cat="X", 
-        drum_kit="X", 
+        name="X",
+        size_cat="X",
+        drum_kit="X",
         guitar_amps="X",
-        bass_amps="x", 
-        piano="x", 
+        bass_amps="x",
+        piano="x",
         synth="x"
     )
 
@@ -111,12 +115,13 @@ def test_save_booking_conflict_raises():
     end = start + timedelta(hours=2)
 
     RoomCalendar.objects.create(
-        user=user, 
-        room=room, 
-        start_daytime=start, 
+        user=user,
+        room=room,
+        start_daytime=start,
         end_daytime=end
     )
 
     cc = CalendarCursor(start.date(), user)
     with pytest.raises(ValueError):
-        cc.save_booking(user, room, start + timedelta(minutes=30), end + timedelta(hours=1))
+        cc.save_booking(user, room, start +
+                        timedelta(minutes=30), end + timedelta(hours=1))

@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404
 from .models import Room, RoomCalendar
 from datetime import datetime, timedelta
-from django.db.models import Q
 
 
 def delete_booking(id, user):
@@ -23,8 +22,12 @@ class CalendarCursor:
         if ignore_booking_id:
             self.all_bookings = self.all_bookings.exclude(id=ignore_booking_id)
 
-        self.user_bookings = [b for b in self.all_bookings if b.user == self.user]
-        self.non_user_bookings = [b for b in self.all_bookings if b.user != self.user]
+        self.user_bookings = [
+            b for b in self.all_bookings if b.user == self.user
+        ]
+        self.non_user_bookings = [
+            b for b in self.all_bookings if b.user != self.user
+        ]
 
     def get_cell_key(self, hour, half, room_id):
         return f"{hour}-{half}-{room_id}"

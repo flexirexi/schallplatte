@@ -30,7 +30,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [".herokuapp.com", "127.0.0.1", "192.168.178.30", ".onrender.com", "schallplatte.onrender.com", "localhost",]
+ALLOWED_HOSTS = [
+    ".herokuapp.com",
+    "127.0.0.1",
+    "192.168.178.30",
+    ".onrender.com",
+    "schallplatte.onrender.com",
+    "localhost",
+]
 
 
 # Application definition
@@ -60,7 +67,7 @@ LOGIN_URL = '/accounts/login/'
 
 MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    # "allauth.account.middleware.AccountMiddleware",  # allauth -> always second place!
+    # "allauth.account.middleware.AccountMiddleware",  # allauth always second!
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -115,7 +122,11 @@ else:
         }
     }
 
-CSRF_TRUSTED_ORIGINS = ["https://*.codeinstitute-ide.net/", "https://*.herokuapp.com", "https://*.onrender.com"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net/",
+    "https://*.herokuapp.com",
+    "https://*.onrender.com"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

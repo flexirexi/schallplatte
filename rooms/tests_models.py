@@ -1,4 +1,3 @@
-from django.test import TestCase
 import pytest
 from django.contrib.auth.models import User
 from .models import Room, RoomCalendar
@@ -9,7 +8,7 @@ from django.utils import timezone
 # Create your tests here.
 @pytest.mark.django_db
 def test_room_str():
-    // basic tests 
+    # basic tests
     room = Room.objects.create(
         name="Studio A",
         size_cat="25qm",
@@ -36,7 +35,7 @@ def test_roomcalendar_str():
     )
     start = timezone.now()
     end = start + timedelta(hours=1)
-    
+
     booking = RoomCalendar.objects.create(
         room=room, user=user,
         start_daytime=start,
@@ -59,6 +58,8 @@ def test_cascade_delete_room():
         piano="Yes",
         synth="No"
     )
+    
+    # Needed to create the objects
     booking = RoomCalendar.objects.create(
         room=room, user=user,
         start_daytime=timezone.now(),
@@ -68,5 +69,3 @@ def test_cascade_delete_room():
 
     room.delete()
     assert RoomCalendar.objects.count() == 0
-
-

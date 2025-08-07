@@ -12,6 +12,7 @@ import json
 from django.http import JsonResponse
 from django.urls import reverse
 
+
 @login_required
 def calendar(request):
     selected_date = request.GET.get("selected_date")
@@ -71,8 +72,9 @@ def booking(request):
 @login_required
 def edit_booking_calendar(request, booking_id):
     booking = get_object_or_404(RoomCalendar, id=booking_id, user=request.user)
-    cursor = CalendarCursor(date=booking.start_daytime.date(), user=request.user, ignore_booking_id=booking.id)
-    today = timezone.now().date()  
+    cursor = CalendarCursor(date=booking.start_daytime.date(
+    ), user=request.user, ignore_booking_id=booking.id)
+    today = timezone.now().date()
     rooms = roomFilterGET(request)
     context = {
         "cursor": cursor,
@@ -112,4 +114,6 @@ def edit_booking_submit(request, booking_id):
     except Exception:
         messages.error(request, "Modification failed. Please try again.")
 
-    return JsonResponse({"status": "ok", "redirect_url": reverse("rooms:calendar")})
+    return JsonResponse(
+        {"status": "ok", "redirect_url": reverse("rooms:calendar")}
+    )

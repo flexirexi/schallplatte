@@ -287,9 +287,49 @@ Important:
   <img src="doc/validation/js2/calendar-ux.js.png" width="800px">
   <img src="doc/validation/js2/calendar-utils.js.png" width="800px">
   
+</details>
+
+
+### Python PEP8 Validation
+- flake8 has been used to validate
+<details>
+<summary>SEE DETAILS</summary>
+<br>
+
+<b>PROJECT: settings.py: </b>
+
+- "line too long" can't be shortened
+- "env unused" necessary for render.com
+
+<img src="doc/validation/py/flake8_settings.png" width="800px">
+
+
+<b>PROJECT: urls.py: No errors</b>
+
+<img src="doc/validation/py/flake8_projects_urls.png" width="800px">
+
+
+<b>APP MAIN: No errors</b>
+
+<img src="doc/validation/py/flake8_main.png" width="800px">
+
+
+<b>APP ROOMS:</b>
+
+- unused variables are necessary for the testing (not the variables but the effect)
+
+<img src="doc/validation/py/flake8_rooms.png" width="800px">
+
+
+<b>APP USER:</b>
+
+- signals is necessary
+
+<img src="doc/validation/py/flake8_user.png" width="800px">
 
 
 </details>
+
 
 ## User Story Testing
 

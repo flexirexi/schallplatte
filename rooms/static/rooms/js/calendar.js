@@ -18,14 +18,7 @@ function getCookie(name) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const wrapper = document.getElementById("calendarWrapper");
     document.getElementById("booking-submit").disabled = "true";
-    if (wrapper) {
-        wrapper.scrollTo({
-            top: wrapper.scrollHeight * (2 / 3),
-            behavior: "smooth",
-        });
-    }
 
     document.querySelector(".handle").addEventListener("click", () => {
         const slide = document.getElementById("mobile-slideup");
@@ -72,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    calendarUX(wrapper);
+    calendarUX();
 });
 
 ["booking-submit", "booking-submit-mobile", "booking-button-mobile"].forEach(
@@ -101,7 +94,6 @@ function handleBookingSubmit(e) {
         start: startTime,
         end: endTime,
     };
-    console.log(payload);
 
     if (window.editBookingId) {
         e.preventDefault();

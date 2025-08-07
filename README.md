@@ -231,18 +231,22 @@ Personally, this was the part with the most fun (apart from designing and creati
 ## Validations
 
 ### HTML
+- html was tested by viewing the source code in the deployed website on render 
+- open the page - right click - view page source
+- copy/paste into the W3C-validator https://validator.w3.org/#validate_by_input
+- tested again after amendments: calendar.html, index.html, profile.html
 
 <details>
   <summary>NO ERRORS</summary>
-  <img src="doc/validation/html/about.png" width="300px">
-  <img src="doc/validation/html/calendar.png" width="300px">
-  <img src="doc/validation/html/forum.png" width="300px">
-  <img src="doc/validation/html/index.png" width="300px">
-  <img src="doc/validation/html/login.png" width="300px">
-  <img src="doc/validation/html/notifications.png" width="300px">
-  <img src="doc/validation/html/profile.png" width="300px">
-  <img src="doc/validation/html/profile_edit.png" width="300px">
-  <img src="doc/validation/html/rooms.png" width="300px">
+  <img src="doc/validation/html2/about.png" width="300px">
+  <img src="doc/validation/html2/calendar.png" width="300px">
+  <img src="doc/validation/html2/forum.png" width="300px">
+  <img src="doc/validation/html2/index.png" width="300px">
+  <img src="doc/validation/html2/login.png" width="300px">
+  <img src="doc/validation/html2/notifications.png" width="300px">
+  <img src="doc/validation/html2/profile.png" width="300px">
+  <img src="doc/validation/html2/profile_edit.png" width="300px">
+  <img src="doc/validation/html2/rooms.png" width="300px">
 </details>
 
 ### CSS
@@ -268,15 +272,20 @@ Personally, this was the part with the most fun (apart from designing and creati
 
 Important:
 
-- while checking the calendar.js, JSHint is no longer up to date -> I switched to ESHint.
+- while checking the calendar.js, JSHint is no longer up to date -> I switched to ESLint.
 - What I did: for the variables <code> document </code>, <code> window </code> and <code> bootstrap</code>, I declared them as global as you can see in the screenshots. Since they are no fails. JS knows these variables well.
+- <b>tested again after amendments: </b> calendar.js, calendar-ux.js, calendar-utils.js
 <details>
   <summary>NO ERRORS</summary>
   <img src="doc/validation/js/global_theme_switcher.png" width="300px">
   <img src="doc/validation/js/main_base.png" width="300px">
   <img src="doc/validation/js/rooms_base.png" width="300px">
-  <img src="doc/validation/js/rooms_calendar_eslint.png" width="300px">
-  <img src="doc/validation/js/rooms_calendar_jslint_is_old_use_eslint_instead.png" width="300px">
+  <br><br>
+  NEW:
+  <br><br>
+  <img src="doc/validation/js2/calendar.js.png" width="800px">
+  <img src="doc/validation/js2/calendar-ux.js.png" width="800px">
+  <img src="doc/validation/js2/calendar-utils.js.png" width="800px">
   
 
 

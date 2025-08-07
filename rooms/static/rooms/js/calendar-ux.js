@@ -11,7 +11,7 @@ import {
 // Custom Calendar-UX functions
 // Esp. for blocking, marking the cells in the grid
 // The heavy stuff - selecting time slots in the calendar interface
-export function calendarUX(wrapper) {
+export function calendarUX() {
     let isSelecting = false;
     let selectionStartValue = null;
     let selectedRoom = null;

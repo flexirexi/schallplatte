@@ -519,15 +519,24 @@ Important:
   <img src="doc/img/automated_testing/pytest_01.png" width="750px">
 </details>
 <b>What was tested:</b>
-
-- 
-  <br><br>
+- `Room.__str__()` returns the correct string format (`"{id}: {name}"`)
+- `RoomCalendar.__str__()` outputs expected booking details including user and time range
+- Deleting a `Room` also removes related entries in ``RoomCalendar
+  (cascade delete)
+- Focus on **string representation** and **relational an **relational integrity** 
+<br><br>
 
 <details open>
   <summary>ROOMS APP: Custom CalendarCursor-Class testing in services.py<span style="color: lightgreen;"> (5 passed, no fails)</span></summary>
   <br>
   <img src="doc/img/automated_testing/pytest_02.png" width="750px">
 </details>
+<b>What was tested:</b>
+- `test_get_cell_key()` simply tests if the correct cell key is being generated (pure calculation, no mock)
+- `test_cell_keys_for_booking()` tests for both relevant half-hour keys to verify correct mapping of booking time ranges (calculation based on a real booking instance) 
+- `test_user_and_all_cell_keys()`: test `user_cell_keys` vs. `all_cell_keys`: to check that only the current user's keys are filtered correctly (functionality, real DB entries)
+- `test_save_booking_success` creates a new booking if the slot is free (testing standard behavior)
+- `test_save_booking_conflict_raises` raises `ValueError` when bookings overlap. It tests that conflicts are being detected.
 <br><br>
 
 <details open>
